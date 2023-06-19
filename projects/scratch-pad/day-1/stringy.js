@@ -146,12 +146,9 @@ function concat(stringOne, stringTwo) {
  */
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-    var args = Array.from(stringOne, stringTwo);
-    // use join() on args array 
-    args.join(',');
-    //return args
-    return args;
-
+    var args = Array.from(arguments);
+    // return the joined args array with no spaces
+    return args.join("");
     // YOUR CODE ABOVE HERE //
 }
 
@@ -188,8 +185,6 @@ function longest(stringOne, stringTwo) {
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
 
     // YOUR CODE ABOVE HERE //
 }
