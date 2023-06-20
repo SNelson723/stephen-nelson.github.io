@@ -35,7 +35,23 @@
 
 function greeter(hour) {
     // YOUR CODE BELOW HERE //
-    
+    // determine if the hour is morning/afternoon/evening/night
+    if (hour <= 11) { //if hour is 11 or lower
+        // print statement
+        console.log('Good Morning!');
+    } else if (hour <= 16) { //if hour is 12-16
+        // print statement
+        console.log('Good Afternoon!');
+    } else if (hour <= 21) { //if hour is 17-21
+        //print statement
+        console.log('Good Evening!');
+    } else if (hour <= 24) { //if hour is 22-24
+        //print statement
+        console.log('Good Night!');
+    } else { //if hour is over 24
+        //print statement
+        console.log('There are only 24 hours in a day!');
+    }
     
     
     
