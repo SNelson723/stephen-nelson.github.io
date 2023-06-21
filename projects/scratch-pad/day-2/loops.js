@@ -35,8 +35,6 @@ function printArrayValuesInReverse(array) {
     console.log(array[i]);
   }
   
-  
-  
   // YOUR CODE ABOVE HERE //
 }
 
@@ -45,16 +43,9 @@ function printArrayValuesInReverse(array) {
  */
 function getObjectKeys(object) {
   // YOUR CODE BELOW HERE //
-  // declare empty array
-  var array = [];
-  //loop over object
-  for (var key in object) {
-    // push object keys into array
-    array.push(key);
-  }
-  // return array
-  return array;
   
+  // return keys with object.keys method
+  return Object.keys(object);
   
   // YOUR CODE ABOVE HERE //
 }
