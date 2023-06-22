@@ -35,7 +35,16 @@
 
 // YOUR CODE GOES BELOW HERE //
 function makeContact(id, nameFirst, nameLast) {
-
+    // declare empty array
+    var user = {};
+    // assign user.id with value of id
+    user.id = id;
+    // assign user.nameFirst with value of nameFirst
+    user.nameFirst = nameFirst
+    // assign user.nameLast with value of nameLast
+    user.nameLast = nameLast;
+    // return user
+    return user;
 } 
 
 
@@ -43,12 +52,49 @@ function makeContactList() {
     /*
      * You need something here to hold contacts. See length api for a hint:
      */
-    var contacts;
+    var contacts = [];
     
     return {
         // we implemented the length api for you //
         length: function() {
             return contacts.length;
+        },
+        // create addContact function taking in contact object as a parameter
+        addContact: function(contact) {
+            // push contact into contacts array
+            contacts.push(contact);
+        },
+        // create findContact function taking in a full name string as a parameter
+        findContact: function(fullName) {
+            for (var i = 0; i < contacts.length; i++) {
+                // determine if fullName is a match
+                if (fullName === contacts[i].nameFirst + ' ' + contacts[i].nameLast) {
+                    //return contact object
+                    return contacts[i];
+                } else {
+                    //return undefined
+                    return undefined;
+                }
+            }
+        },
+        removeContact: function(contact) {
+            //loop over contacts array
+            for (var i = 0; i < contacts.length; i++) {
+                // splice out the object
+                contacts.splice(contact, 1);
+            }
+        },
+        printAllContactNames: function() { 
+            //declare empty array
+            var array = [];
+            // loop over contacts
+            for (var i = 0; i < contacts.length; i++) {
+                // push full names into empty array
+                array.push(contacts[i].nameFirst + ' ' + contacts[i].nameLast);
+            }
+            //initialize string variable with joined array (line breaks)
+            var string = array.join('\n');
+            return string;
         }
     }
 }

@@ -59,13 +59,13 @@ function createLessThanFilter(base) {
  * Function that tests whether a given String starts with the startsWith 
  * character.
  */
-function createStartsWithFilter(startsWith) {
+function createStartsWithFilter(startsWith) { 
     // YOUR CODE BELOW HERE //
     //function comparing startsWith and start of a string
      return function (string) {
-        if (string[0].toLowerCase() == startsWith) {
+        if (string[0].toLowerCase() === startsWith) { 
             return true;
-        } else if (string[0].toUpperCase() == startsWith) {
+        } else if (string[0].toUpperCase() === startsWith) { 
             return true;
         } else {
             return false;
