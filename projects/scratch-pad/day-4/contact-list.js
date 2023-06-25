@@ -40,7 +40,7 @@ function makeContact(id, nameFirst, nameLast) {
     // assign user.id with value of id
     user.id = id;
     // assign user.nameFirst with value of nameFirst
-    user.nameFirst = nameFirst
+    user.nameFirst = nameFirst;
     // assign user.nameLast with value of nameLast
     user.nameLast = nameLast;
     // return user
@@ -53,14 +53,13 @@ function makeContactList() {
      * You need something here to hold contacts. See length api for a hint:
      */
     var contacts = [];
-    
+
     return {
-        // we implemented the length api for you //
         length: function() {
-            return contacts.length;
+            return contacts.length; // we implemented the length api for you //
         },
         // create addContact function taking in contact object as a parameter
-        addContact: function(contact) {
+        addContact: function (contact) {
             // push contact into contacts array
             contacts.push(contact);
         },
