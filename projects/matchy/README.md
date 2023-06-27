@@ -101,9 +101,9 @@ Imagine that our website has a profile page for each animal. On this profile pag
  4. [Y] Take a look at the documentation for `Math.random` here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
  5. [Y] Write a function called `getRandom` that takes our `animals` array and returns  a random `index` of the input array, using `Math.random`
  6. [Y] Using a random index from this function that you just created, get a random animal and add its `name` to `friends`.
- 7. [ ] `console.log` `friends`.
- 8. [ ] Using **bracket notation**, add the `friends` list as a **property** also named `friends` on one of the animals in the `animals` array
- 9. [ ] `console.log` your work.
+ 7. [Y] `console.log` `friends`.
+ 8. [Y] Using **bracket notation**, add the `friends` list as a **property** also named `friends` on one of the animals in the `animals` array
+ 9. [Y] `console.log` your work.
  
 ## Step 8 - Take Another Break!!
 
