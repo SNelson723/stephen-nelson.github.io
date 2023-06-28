@@ -70,13 +70,13 @@ function add(array, object) {
     // loop over array
     for (let i = 0; i < array.length; i++) {
         // check if name is unique
-        if (object.name !== array[i].name && object.name.length > 0 && object.name.length > 0) {
+        if (object.name !== array[i].name && object.name.length > 0 && object.species.length > 0) {
             // push object into array
             array.push(object);
-        } else {
-            // return array without the new object
-            return array;
-        }
+         } else {
+             // return array
+             return array;
+         }
     }
 }
 
