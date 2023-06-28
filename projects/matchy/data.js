@@ -132,14 +132,15 @@ var friends = [];
 //declare getRandom function that takes in an array
 function getRandom(array) {
   //return random index of array 
-  return array[Math.floor(Math.random() * array.length)];
+  return Math.floor(Math.random() * array.length);
+ 
 }
 
-//use getRandom to push an animal into friends array
-getRandom(animals);
+// use getRandom to push an animal object into friends array
+friends.push(animals[getRandom(animals)].name)
 
 //use bracket notation to add friends key to one of the animals
-cat['friends'] = friends;
+animals[animals.length - 1]['friends'] = friends;
 
 //log friends
 console.log(friends);

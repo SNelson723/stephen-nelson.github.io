@@ -157,7 +157,7 @@ This is called **data validation** and it's extremely important in web developme
 Now you're done! Time to submit your great work to Greenlight to get that sweet, sweet green light.
 
 ## Grade and submit
- 1. [ ] Open up a new `bash` terminal
+ 1. [] Open up a new `bash` terminal
  2. [ ] Run the command `os test` in the bash terminal
    - Select your class
    - Select your Matchy
