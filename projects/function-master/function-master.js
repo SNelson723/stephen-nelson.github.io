@@ -108,8 +108,8 @@ function hasWord(string, word) {
         if (string[i] === word) {
             return true;
         }
-        return false;
     }
+    return false;
 }
 
 //////////////////////////////////////////////////////////////////////
