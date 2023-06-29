@@ -142,7 +142,11 @@ function isFriend(name, object) { //need to solve
 
 function nonFriends(name, array) { // STILL INCORRECT
     let notFriends = [];
-    
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].name !== name && !array[i].friends.includes(name)) {
+            notFriends.push(array[i].name);
+        }
+    }
     return notFriends;
 }
 
