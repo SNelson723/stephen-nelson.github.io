@@ -126,16 +126,14 @@ function addFriend (name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) { //need to solve
-    if (object.friends && object.friends.length > 0) {
-        let arr = object.friends;
-        for (let i = 0; i < arr.length; i++) {
-            if (arr[i] === name) {
+    for (let key in object) {
+        for (let i = 0; i < object[key].length; i++) {
+            if (object[key][i] === name) {
                 return true;
             }
         }
-    } else {
-        return false;
     }
+    return false;
 }
 
 //////////////////////////////////////////////////////////////////////
