@@ -11,6 +11,7 @@ function objectValues(object) {
 //////////////////////////////////////////////////////////////////////
 
 function keysToString(object) {
+    // return Object.keys(object).join(" ");
     let arr = [];
     for (let key in object) {
         arr.push(key);
@@ -102,13 +103,13 @@ function maybeNoises(object) {
 //////////////////////////////////////////////////////////////////////
 
 function hasWord(string, word) {
-    string.split(" ");
+    string = string.split(" ");
     for (let i = 0; i < string.length; i++) {
         if (string[i] === word) {
             return true;
         }
+        return false;
     }
-    return false;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -124,7 +125,7 @@ function addFriend (name, object) {
 // Function 12 - Is Friend ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function isFriend(name, object) {
+function isFriend(name, object) { //need to solve
     if (object.friends && object.friends.length > 0) {
         let arr = object.friends;
         for (let i = 0; i < arr.length; i++) {
