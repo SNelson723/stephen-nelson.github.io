@@ -102,9 +102,9 @@ function maybeNoises(object) {
 //////////////////////////////////////////////////////////////////////
 
 function hasWord(string, word) {
-    let array = string.split(" ");
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] === word) {
+    string.split(" ");
+    for (let i = 0; i < string.length; i++) {
+        if (string[i] === word) {
             return true;
         }
     }
