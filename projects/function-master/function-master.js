@@ -71,9 +71,7 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
-    if (object.hasOwnProperty("name")) {
-        object.name = object.name.charAt(0).toUpperCase() + object.name.slice(1);
-    }
+    object.name = object.name.charAt(0).toUpperCase() + object.name.slice(1);
     return "Welcome " + object.name + "!";
 }
 
@@ -82,10 +80,8 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-    if (object.hasOwnProperty('name') && object.hasOwnProperty('species')) {
-        object.name = object.name[0].toUpperCase() + object.name.slice(1);
-        object.species = object.species[0].toUpperCase() + object.species.slice(1);
-    }
+    object.name = object.name[0].toUpperCase() + object.name.slice(1);
+    object.species = object.species[0].toUpperCase() + object.species.slice(1);
     return object.name + " is a " + object.species;
 }
 
