@@ -141,7 +141,9 @@ function isFriend(name, object) { //need to solve
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) { // STILL INCORRECT
+    let notFriends = [];
     
+    return notFriends;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -170,14 +172,14 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup (array) {
-    let noDups = [];
-    for (let i = 0; i < array.length; i++) {
-        if (!noDups.includes(array[i])) {
-            noDups.push(array[i]);
-        }
-    }
-    return noDups;
-    // return [...new Set(array)]; //returns array of ONLY UNIQUE values without duplicates
+    // let noDups = [];
+    // for (let i = 0; i < array.length; i++) {
+    //     if (!noDups.includes(array[i])) {
+    //         noDups.push(array[i]);
+    //     }
+    // }
+    // return noDups;
+    return [...new Set(array)]; //returns array of ONLY UNIQUE values without duplicates
 }
 
 //////////////////////////////////////////////////////////////////////
