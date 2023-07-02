@@ -7,6 +7,14 @@
  * data mutation, and producting new values.
  * 
  * Let's take a look into the 8 main types of operators and how we can use them in JavaScript!
+ * 1) Assignment
+ * 2} Arithmetic
+ * 3} Comparison
+ * 4) Conditional
+ * 5) String
+ * 6) Type
+ * 7) Ternary
+ * 8) Bitwise
  */
 
 /**
@@ -86,4 +94,30 @@ num %= 5; //remainder assignment => same as var num = 10 % 5;
 
 num **= 2; //exponentiation assignment => same as var num = 10 ** 2;
 
+/**
+ * 3) COMPARISON OPERATOR
+ *      Comparison operators are used to compare two operands and return a logical
+ *      (boolean) value of true or false. The operands can be numbers, strings, 
+ *      logical, or object values.
+ */
 
+// == 
+
+// ===
+
+// !==
+
+// >
+
+// >=
+
+// <
+
+// <+
+
+/**
+ * 4) CONDITIONAL
+ *      The conditional operator is the only operator that takes three operands
+ *      (aka ternary operator) and can have either true or false values based 
+ *      on the condition.
+ */
