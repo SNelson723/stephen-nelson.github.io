@@ -36,7 +36,7 @@
  * because it has not been assigned a value
  */
 
-var number;
+var number; //
 
 console.log(number); //==> prints undefined because var number holds no value
 
