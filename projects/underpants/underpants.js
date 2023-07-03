@@ -130,6 +130,24 @@ _.first = function(array, number) {
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
+_.last = function(array, number) {
+    if (!Array.isArray(array) || number < 0) {
+        return [];
+    } else if(typeof number !== "number") {
+        return array[array.length -1];
+    } else if (number > array.length) {
+        return array;
+    } else {
+        let output = [];
+        for (let i = 0; i < array.length; i++) {
+            if (i >= (number - 1)) {
+                output.push(array[i]);
+            }
+        }
+        return output;
+    }
+}
+
 
 /** _.indexOf
 * Arguments:
@@ -147,6 +165,18 @@ _.first = function(array, number) {
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
+_.indexOf = function(array, value) {
+    if (array.includes(value)) {
+        for (let i = 0; i < array.length; i++) {
+            if (array [i] === value) {
+                return i;
+            }
+        }
+    } else if (!array.includes(value)) {
+        return -1;
+    }
+}
+
 
 /** _.contains
 * Arguments:
@@ -163,6 +193,9 @@ _.first = function(array, number) {
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
+_.contains = function(array, value) {
+    return array.includes(value) ? true : false;
+}
 
 /** _.each
 * Arguments:
@@ -186,6 +219,18 @@ _.first = function(array, number) {
 //     // else collection is object
 // }
 
+_.each = function(collection, func) {
+    if (Array.isArray(collection)) {
+        for (let i = 0; i < collection.length; i++) {
+            func(collection[i], i, collection);
+        }
+    } else if (typeof collection === "object") {
+        for (let key in collection) {
+            func(collection[key], key, collection);
+        }
+    }
+}
+
 /** _.unique
 * Arguments:
 *   1) An array
@@ -195,6 +240,11 @@ _.first = function(array, number) {
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
+
+_.unique = function(array) {
+    
+}
+
 
 
 /** _.filter
@@ -213,6 +263,16 @@ _.first = function(array, number) {
 *   use _.each in your implementation
 */
 
+_.filter = function(array, func) {
+    let output = [];
+    for (let i = 0; i < array.length; i++) {
+        if (func(array[i], i, array)) {
+            output.push(array[i]);
+        }
+    }
+    return output;
+    
+}
 
 /** _.reject
 * Arguments:
