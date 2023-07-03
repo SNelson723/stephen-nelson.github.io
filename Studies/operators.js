@@ -2,19 +2,16 @@
  * OPERATORS
  * 
  * SUMMARY: Operators are multi-purpose bits of code used to assign values, compare values, 
- * perform arithmetic operations, etc. There are 8 main types of operators and each have unique
+ * perform arithmetic operations, etc. There are a few types of operators and each have unique
  * functions and tasks. Each operator requires operands on either side of the expression for comparison, 
  * data mutation, and producting new values.
  * 
- * Let's take a look into the 8 main types of operators and how we can use them in JavaScript!
  * 1) Assignment
  * 2} Arithmetic
  * 3} Comparison
  * 4) Conditional
- * 5) String
- * 6) Type
- * 7) Ternary
- * 8) Bitwise
+ * 5) typeof
+
  */
 
 /**
@@ -54,12 +51,23 @@ var array = []; //empty array literal assigned to var array;
 
 var add = 5 + 5; // ADDITION => adds numbers
 
+/**
+ * STRING OPERATOR
+ *      Additionally the addition operator can be used to concatenate strings together
+ *      using one of two ways
+ */
+
 var stringOne = "Hello ";
 var stringTwo = "Buddy!";
 
-// additionally the addition operator can be used to fuse two or multiple strings together
 var fullString = stringOne + stringTwo; 
 console.log(fullString); //prints "Hello Buddy!"
+
+// OR THIS WAY
+
+stringOne += stringTwo; //addition assignment operator discuessed in next section
+
+// BACK TO ARITHMETIC
 
 var subtract = 10 - 5; //SUBTRACTION => subtracts numbers
 
@@ -116,8 +124,17 @@ num **= 2; //exponentiation assignment => same as var num = 10 ** 2;
 // <+
 
 /**
- * 4) CONDITIONAL
+ * 4) CONDITIONAL OPERATOR
  *      The conditional operator is the only operator that takes three operands
  *      (aka ternary operator) and can have either true or false values based 
  *      on the condition.
+ */
+
+/**
+ * 5) typeof OPERATOR
+ *      The typeof operator returns a string indicating the type of unevaluated data
+ *      aka the operand.There are some discrepancies to keep in mind when using typeof
+ *      on any data the interpreter returns as an OBJECT. This type of operator is useful
+ *      in helping us clarify the datatypes we are working with and if the methods/sytnax 
+ *      being used are compatiable with that data.
  */
