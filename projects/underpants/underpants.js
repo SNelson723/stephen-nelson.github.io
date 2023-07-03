@@ -98,8 +98,16 @@ _.first = function(array, number) {
         return [];
     } else if(typeof number !== "number") {
         return array[0];
-    } else if (number > 0 && number < array.length) {
-        return 
+    } else if (number > array.length) {
+        return array;
+    } else {
+        let output = [];
+        for (let i = 0; i < array.length; i++) {
+            if (i < number) {
+                output.push(array[i]);
+            }
+        }
+        return output;
     }
 }
 
