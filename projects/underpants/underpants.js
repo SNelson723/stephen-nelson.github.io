@@ -93,6 +93,16 @@ _.typeOf = function(value) {
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
 
+_.first = function(array, number) {
+    if (!Array.isArray(array) || number < 0) {
+        return [];
+    } else if(typeof number !== "number") {
+        return array[0];
+    } else if (number > 0 && number < array.length) {
+        return 
+    }
+}
+
 
 /** _.last
 * Arguments:
