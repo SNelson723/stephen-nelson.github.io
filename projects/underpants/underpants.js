@@ -168,7 +168,7 @@ _.last = function(array, number) {
 _.indexOf = function(array, value) {
     if (array.includes(value)) {
         for (let i = 0; i < array.length; i++) {
-            if (array [i] === value) {
+            if (array[i] === value) {
                 return i;
             }
         }
@@ -242,9 +242,14 @@ _.each = function(collection, func) {
 */
 
 _.unique = function(array) {
-    
+    let output = [];
+    for (let i = 0; i < array.length; i++) {
+        if (_.indexOf(output, array[i])) {
+            output.push(array[i]);
+        }
+    }
+    return [...new Set(output)];
 }
-
 
 
 /** _.filter
@@ -264,14 +269,13 @@ _.unique = function(array) {
 */
 
 _.filter = function(array, func) {
-    let output = [];
+    let filter = [];
     for (let i = 0; i < array.length; i++) {
         if (func(array[i], i, array)) {
-            output.push(array[i]);
+            filter.push(array[i]);
         }
     }
-    return output;
-    
+    return filter;
 }
 
 /** _.reject
@@ -286,6 +290,16 @@ _.filter = function(array, func) {
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
+
+_.reject = function(array, test) {
+    let reject = [];
+    for (let i = 0; i < array.length; i++) {
+        if (!test(array[i], i, array)) {
+            reject.push(array[i]);
+        }
+    }
+    return reject;
+}
 
 
 /** _.partition
@@ -307,6 +321,16 @@ _.filter = function(array, func) {
 }
 */
 
+_.partition = function(array, test) {
+    let output = [[], []];
+    for (let i = 0; i < array.length; i++) {
+        if (test(array[i], i, array)) {
+            output[0].push(array[i])
+        } else output[1].push(array[i]);
+    }
+    return output;
+}
+
 
 /** _.map
 * Arguments:
@@ -324,6 +348,21 @@ _.filter = function(array, func) {
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
+_.map = function(collection, func) {
+    let output = [];
+    if (Array.isArray(collection)) {
+        //iterate through array
+        for (let i = 0; i < collection.length; i++) {
+            output.push(func(collection[i], i, collection));
+        }
+        return output;
+    } else {
+        for (let key in collection) {
+            output.push(func(collection[key], key, collection));
+        }
+        return output;
+    }
+}
 
 /** _.pluck
 * Arguments:
@@ -358,6 +397,39 @@ _.filter = function(array, func) {
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 
+_.every = function(collection, test) {
+    if (Array.isArray(collection)) {
+        //determine if test wasn't provided
+        if (!test) {
+            for (let i = 0; i < collection.length; i++) {
+                if (!collection[i]) {
+                    return false;
+                }
+            }
+        } else {
+            for (let i = 0; i < collection.length; i++) {
+                if (!test(collection[i], i, collection)) { //if result of invoking callback fucntion is truthy
+                    return false;
+                }
+            }
+        }
+    } else {
+        if (!test) {
+            for (let key in collection) {
+                if (!collection[key]) {
+                    return false;
+                }
+            }
+        } else {
+            for (let key in collection) {
+                if (!test(collection[key], key, collection)) {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+};
 
 /** _.some
 * Arguments:
