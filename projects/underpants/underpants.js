@@ -452,6 +452,48 @@ _.every = function(collection, test) {
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function(collection, test) {
+    //determine if collection is array
+    if (Array.isArray(collection)) {
+        //determine if test wasn't provided
+        if (!test) {
+            //iterate through array
+            for (let i = 0; i < collection.length; i++) {
+                if (collection[i]) { //if element resolves to truthy
+                    return true; //return true
+                }
+            }
+        } else { //else if test is provided
+            //iterate through array
+            for (let i = 0; i < collection.length; i++) {
+                //determine if test === true
+                if (test(collection[i], i, collection)) { 
+                    return true; //return true
+                }
+            }
+        }
+    } else { //else if collection is object
+        if (!test) { //if test not provided
+            //loop over object
+            for (let key in collection) {
+                if (collection[key]) { //determine if value is truthy
+                    return true; //return true
+                }
+            }
+        } else { //else if test is provided
+            //loop over object
+            for (let key in collection) {
+                //determine if test produces true
+                if (test(collection[key], key, collection)) {
+                    //return true if test === true
+                    return true;
+                }
+            }
+        }
+    }
+    //return false if all elements equate to false
+    return false;
+}
 
 /** _.reduce
 * Arguments:
