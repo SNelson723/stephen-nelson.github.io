@@ -233,3 +233,146 @@ function partition(array, test) {
 module.exports.partition = partition;
 
 
+
+function map(collection, func) {
+    let output = [];
+    if (Array.isArray(collection)) {
+        for (let i = 0; i < collection.length; i++) {
+            output.push(func(collection[i], i, collection));
+        }
+    } else {
+        for (let key in collection) {
+            output.push(func(collection[key], key, collection));
+        }
+    }
+    return output;
+}
+module.exports.map = map;
+
+
+
+function pluck(array, property) {
+    let output = [];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].hasOwnProperty(property)) {
+            output.push(array[i][property])
+        }
+    }
+    return _.map(output, _.identity);
+}
+module.exports.pluck = pluck;
+
+
+
+function every(collection, test) {
+    if (Array.isArray(collection)) {
+        if (!test) {
+            for (let i = 0; i < collection.length; i++) {
+                if (!collection[i]) {
+                    return false;
+                }
+            }
+        } else { 
+            for (let i = 0; i < collection.length; i++) {
+                if (!test(collection[i], i, collection)) {
+                    return false;
+                }
+            }
+        }
+    } else {
+        if (!test) {
+            for (let key in collection) {
+                if (!collection[key]) {
+                    return false;
+                }
+            }
+        } else {
+            for (let key in collection) {
+                if (!test(collection[key], key, collection)) {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+};
+module.exports.every = every;
+
+
+
+function some(collection, test) {
+    if (Array.isArray(collection)) {
+        if (!test) {
+            for (let i = 0; i < collection.length; i++) {
+                if (collection[i]) {
+                    return true;
+                }
+            }
+        } else {
+            for (let i = 0; i < collection.length; i++) {
+                if (test(collection[i], i, collection)) { 
+                    return true;
+                }
+            }
+        }
+    } else {
+        if (!test) {
+            for (let key in collection) {
+                if (collection[key]) { 
+                    return true; 
+                }
+            }
+        } else { 
+            for (let key in collection) {
+                if (test(collection[key], key, collection)) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+module.exports.some = some;
+
+
+
+function reduce(array, test, seed) {
+    let reduced;
+    if (seed) {
+        reduced = seed;
+        for (let i = 0; i < array.length; i++) {
+            reduced = test(reduced, array[i], i);
+        }
+    } else if (seed === undefined) {
+        reduced = array[0];
+        for (let i = 1; i < array.length; i++) {
+            reduced = test(reduced, array[i], i);
+            }
+        } else {
+        return 0;
+    }
+    return reduced;
+}
+module.exports.reduce = reduce;
+
+
+
+function extend(object1, object2) {
+    for (let key in object2) {
+        if (!object1.hasOwnProperty(object2[key])) {
+            object1[key] = object2[key];
+            }
+        }
+        if (arguments) {
+            for (let i = 0; i < arguments.length; i++) {
+                for (let key in arguments[i]) {
+                    if (!object1.hasOwnProperty(arguments[i][key])) {
+                        object1[key] = arguments[i][key];
+                    }
+                }
+            }
+
+        }
+    return object1;
+}
+module.exports.extend = extend;
