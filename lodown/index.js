@@ -233,7 +233,13 @@ function partition(array, test) {
 module.exports.partition = partition;
 
 
-
+/**
+ * map: takes in a collection and a function and returns a new array
+ * @param {*} collection : either an array or object to loop over
+ * @param {*} func : The function to be applied over each value
+ * @returns {+} array: Function returns a new array of elements that passed through
+ * the function
+ */
 function map(collection, func) {
     let output = [];
     if (Array.isArray(collection)) {
@@ -251,10 +257,11 @@ module.exports.map = map;
 
 
 /**
- * 
- * @param {*} array 
- * @param {*} property 
- * @returns 
+ * pluck: takes in an array and property and returns a new array
+ * @param {*} array : An array of nested objects
+ * @param {*} property : The property that will be tested to see if it exists in the nested object
+ * @returns {+} array: Function returns an array that contains the property found in the array's
+ * nested objects
  */
 function pluck(array, property) {
     let output = [];
@@ -269,10 +276,11 @@ module.exports.pluck = pluck;
 
 
 /**
- * 
- * @param {*} collection 
- * @param {*} test 
- * @returns 
+ * every: takes in a collection and test => returns a boolean value (true/false)
+ * @param {*} collection : Either an array or object
+ * @param {*} test : Function used on the values of the collection
+ * @returns boolean: Returns a boolean value based on if all values passed into the test return 
+ * true and false if not
  */
 function every(collection, test) {
     if (Array.isArray(collection)) {
@@ -310,10 +318,11 @@ module.exports.every = every;
 
 
 /**
- * 
- * @param {*} collection 
- * @param {*} test 
- * @returns 
+ * some: takes in a collection and test => returns a boolean value (true/false)
+ * @param {*} collection : Either an array or object
+ * @param {*} test : Function used on the values of the collection
+ * @returns boolean: Returns a boolean value based on if all values passed if at least one of the 
+ * tested values returns true and false if none pass
  */
 function some(collection, test) {
     if (Array.isArray(collection)) {
@@ -351,11 +360,11 @@ module.exports.some = some;
 
 
 /**
- * 
- * @param {*} array 
- * @param {*} test 
- * @param {*} seed 
- * @returns 
+ * reduce: takes in an array, test, and seed => returns a sum of the array's numbers
+ * @param {*} array : The array that will be looped over [1, 2, 3, 4, 5]
+ * @param {*} test  : The function used to produce and update the sum
+ * @param {*} seed  : Number: starting point of the sums
+ * @returns {+} number: Function returns a number value of all elements in the provided array
  */
 function reduce(array, test, seed) {
     let reduced;
@@ -378,10 +387,12 @@ module.exports.reduce = reduce;
 
 
 /**
- * 
- * @param {*} object1 
- * @param {*} object2 
- * @returns 
+ * extend: takes in two objects but has the capacity to pass in more than two objects
+ * and returns object1
+ * @param {*} object1 : The object that is to be updated
+ * @param {*} object2 : The object used to pass values into object1 if they are not found
+ * in object1
+ * @returns object: Function returns an updated object of unique values (no duplicates)
  */
 function extend(object1, object2) {
     for (let key in object2) {
