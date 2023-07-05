@@ -642,7 +642,7 @@ _.reduce = function(array, test, seed) {
             reduced = test(reduced, array[i], i);
         }
         //if seed is not provided
-    } else if (!seed) {
+    } else if (seed === undefined) {
         //assign first element to reduced
         reduced = array[0];
         //iterate through array
