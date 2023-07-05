@@ -244,11 +244,11 @@ _.each = function(collection, func) {
 _.unique = function(array) {
     let output = [];
     for (let i = 0; i < array.length; i++) {
-        if (_.indexOf(output, array[i])) {
+        if (_.indexOf(output, array[i]) === -1 && !output.includes(array[i])) {
             output.push(array[i]);
         }
     }
-    return [...new Set(output)];
+    return output;
 }
 
 
@@ -375,6 +375,15 @@ _.map = function(collection, func) {
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
+_.pluck = function(array, property) {
+    let output = [];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].hasOwnProperty(property)) {
+            output.push(array[i][property])
+        }
+    }
+    return _.map(output, _.identity);
+}
 
 /** _.every
 * Arguments:
@@ -515,23 +524,21 @@ _.some = function(collection, test) {
 */
 
 _.reduce = function(array, test, seed) {
-    if (!seed) {
-        let total = 0;
+    let reduced;
+    if (seed) {
+        reduced = seed;
         for (let i = 0; i < array.length; i++) {
-            test(total, array[i], i)
+            reduced = test(reduced, array[i], i);
         }
-        return total;
-    } else if (seed) {
-        let sum = 0;
-        for (let i = 0; i < array.length; i++) {
-            if (i === 0) {
-                sum += test(seed, array[i], i);
-            } else {
-                sum += test(sum, array[i], i);
-            }
+    } else if (seed === undefined) {
+        reduced = array[0];
+        for (let i = 1; i < array.length; i++) {
+            reduced = test(reduced, array[i], i);
         }
-        return sum;
+    } else {
+        return 0;
     }
+    return reduced;
 }
 
 /** _.extend
@@ -550,7 +557,22 @@ _.reduce = function(array, test, seed) {
 */
 
 _.extend = function(object1, object2) {
+        for (let key in object2) {
+            if (!object1.hasOwnProperty(object2[key])) {
+                object1[key] = object2[key];
+            }
+        }
+        if (arguments) {
+            for (let i = 0; i < arguments.length; i++) {
+                for (let key in arguments[i]) {
+                    if (!object1.hasOwnProperty(arguments[i][key])) {
+                        object1[key] = arguments[i][key];
+                    }
+                }
+            }
 
+        }
+    return object1;
 }
 
 //////////////////////////////////////////////////////////////////////
