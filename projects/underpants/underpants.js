@@ -514,6 +514,25 @@ _.some = function(collection, test) {
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
+_.reduce = function(array, test, seed) {
+    if (!seed) {
+        let total = 0;
+        for (let i = 0; i < array.length; i++) {
+            test(total, array[i], i)
+        }
+        return total;
+    } else if (seed) {
+        let sum = 0;
+        for (let i = 0; i < array.length; i++) {
+            if (i === 0) {
+                sum += test(seed, array[i], i);
+            } else {
+                sum += test(sum, array[i], i);
+            }
+        }
+        return sum;
+    }
+}
 
 /** _.extend
 * Arguments:
@@ -529,6 +548,10 @@ _.some = function(collection, test) {
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+_.extend = function(object1, object2) {
+
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
