@@ -250,7 +250,12 @@ function map(collection, func) {
 module.exports.map = map;
 
 
-
+/**
+ * 
+ * @param {*} array 
+ * @param {*} property 
+ * @returns 
+ */
 function pluck(array, property) {
     let output = [];
     for (let i = 0; i < array.length; i++) {
@@ -263,7 +268,12 @@ function pluck(array, property) {
 module.exports.pluck = pluck;
 
 
-
+/**
+ * 
+ * @param {*} collection 
+ * @param {*} test 
+ * @returns 
+ */
 function every(collection, test) {
     if (Array.isArray(collection)) {
         if (!test) {
@@ -299,7 +309,12 @@ function every(collection, test) {
 module.exports.every = every;
 
 
-
+/**
+ * 
+ * @param {*} collection 
+ * @param {*} test 
+ * @returns 
+ */
 function some(collection, test) {
     if (Array.isArray(collection)) {
         if (!test) {
@@ -335,7 +350,13 @@ function some(collection, test) {
 module.exports.some = some;
 
 
-
+/**
+ * 
+ * @param {*} array 
+ * @param {*} test 
+ * @param {*} seed 
+ * @returns 
+ */
 function reduce(array, test, seed) {
     let reduced;
     if (seed) {
@@ -356,7 +377,12 @@ function reduce(array, test, seed) {
 module.exports.reduce = reduce;
 
 
-
+/**
+ * 
+ * @param {*} object1 
+ * @param {*} object2 
+ * @returns 
+ */
 function extend(object1, object2) {
     for (let key in object2) {
         if (!object1.hasOwnProperty(object2[key])) {
