@@ -629,32 +629,26 @@ _.some = function(collection, test) {
 */
 
 _.reduce = function(array, test, seed) {
-    //declare empty variable
-    let reduced;
-    //determine if seed is provided
-    if (seed) {
-        // assign seed to empty variable
-        reduced = seed;
+    let result;
+    // determine if seed is not given
+    if(seed === undefined) {
+        //assign first index of array to result
+        result = array[0];
+        for (let i = 1; i < array.length; i++) {
+            //reassign result to result of callback function
+            result = test(result, array[i], i);
+        }
+    } else { //seed is given
+        //assign seed to result
+        result = seed;
         //iterate through array
         for (let i = 0; i < array.length; i++) {
-            //reassign reduced with updated value
-            //reduced in the function call is the sum from the previous iteration
-            reduced = test(reduced, array[i], i);
+            //reassign result to result of callback function
+            result = test(result, array[i], i, array);
         }
-        //if seed is not provided
-    } else if (seed === undefined) {
-        //assign first element to reduced
-        reduced = array[0];
-        //iterate through array
-        for (let i = 1; i < array.length; i++) {
-            //reassign new sum to reduced using callback function
-            reduced = test(reduced, array[i], i);
-            }
-        } else {
-        return 0;
     }
-    //return sum
-    return reduced;
+    //return result
+    return result;
 }
 
 /** _.extend
@@ -695,7 +689,6 @@ _.extend = function(object1, object2) {
                     }
                 }
             }
-
         }
     //return updated object1
     return object1;
