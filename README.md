@@ -20,3 +20,8 @@
 6) In terminal, type => npm install -g opspark
 7) In terminal, type => os install
 8) Select project to install
+
+#To access directory
+(main) $ cd projects/let-s-get-functional (let's get functional in this case)
+(main) $ cd projects/  ==> followed by name of directory
+$ npm install (file/library)

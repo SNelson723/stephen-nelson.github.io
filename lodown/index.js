@@ -366,22 +366,20 @@ module.exports.some = some;
  * @param {*} seed  : Number: starting point of the sums
  * @returns {+} number: Function returns a number value of all elements in the provided array
  */
-function reduce(array, test, seed) {
-    let reduced;
-    if (seed) {
-        reduced = seed;
-        for (let i = 0; i < array.length; i++) {
-            reduced = test(reduced, array[i], i);
-        }
-    } else if (seed === undefined) {
-        reduced = array[0];
+function reduce (array, test, seed) {
+    let result;
+    if(seed === undefined) {
+        result = array[0];
         for (let i = 1; i < array.length; i++) {
-            reduced = test(reduced, array[i], i);
-            }
-        } else {
-        return 0;
+            result = test(result, array[i], i);
+        }
+    } else {
+        result = seed;
+        for (let i = 0; i < array.length; i++) {
+            result = test(result, array[i], i, array);
+        }
     }
-    return reduced;
+    return result;
 }
 module.exports.reduce = reduce;
 
