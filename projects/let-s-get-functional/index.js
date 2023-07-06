@@ -54,7 +54,16 @@ var oldestCustomer = function(array) {
     return oldest;
 };
 
-var youngestCustomer;
+var youngestCustomer = function(array) {
+    let oldest = _.reduce(array, function(accumulator, current, i) {
+        let customer = current;
+        if (current.age > accumulator.age) {
+            customer = accumulator.name;
+        }
+        return customer;
+    })
+    return oldest;
+};
 
 var averageBalance;
 
