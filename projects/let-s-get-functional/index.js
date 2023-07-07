@@ -65,7 +65,9 @@ var youngestCustomer = function(array) {
     return oldest;
 };
 
-var averageBalance;
+var averageBalance = (array) => {
+
+};
 
 var firstLetterCount = function(array, char) {
     let count = _.filter(array, function(customer) {
@@ -105,7 +107,7 @@ var friendsCount = (array, name) => {
 };
 
 var topThreeTags = (array) => {
-
+    
 };
 
 var genderCount = (array) => {
