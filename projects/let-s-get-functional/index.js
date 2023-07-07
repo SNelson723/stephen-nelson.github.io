@@ -2,7 +2,7 @@
 
 'use strict';
 
-const { countBy } = require('lodash');
+const { countBy, castArray } = require('lodash');
 var customers = require('./data/customers.json');
 var _ = require('underbar');
 
@@ -93,20 +93,47 @@ var friendFirstLetterCount = (array, customer, char) => {
 };
 
 var friendsCount = (array, name) => {
-    // let fCount = [];
-    // for (let i = 0; i < array.length; i++) {
-    //     for (let j = 0; j < array[i].friends.length; j++) {
-    //         if (array[i].friends[j].name === name) {
-    //             fCount.push(array[i].name); 
-    //         }
-    //     }
-    // }
-    // return fCount;
+    let fCount = [];
+    for (let i = 0; i < array.length; i++) {
+        for (let j = 0; j < array[i].friends.length; j++) {
+            if (array[i].friends[j].name === name) {
+                fCount.push(array[i].name); 
+            }
+        }
+    }
+    return fCount;
 };
 
-var topThreeTags;
+var topThreeTags = (array) => {
 
-var genderCount;
+};
+
+var genderCount = (array) => {
+    let result = {
+        male: 0,
+        female: 0,
+        "non-binary": 0
+    };
+    let male = _.reduce(array, function(sum, current) {
+        if (current.gender === "male") {
+            sum = result.male++
+        }
+        return sum
+    }, 0);
+    let female = _.reduce(array, function(sum, current) {
+        if (current.gender === "female") {
+            sum = result.female++
+        }
+        return sum
+    }, 0);
+    let neither = _.reduce(array, function(sum, current) {
+        if (current.gender === "non-binary") {
+            sum = result['non-binary']++
+        }
+        return sum
+    }, 0);
+    return result;
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
