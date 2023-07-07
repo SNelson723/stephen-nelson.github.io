@@ -105,35 +105,32 @@ var friendsCount = (array, name) => {
 };
 
 var topThreeTags = (array) => {
-
+    
 };
 
 var genderCount = (array) => {
     let result = {
-        male: 0,
-        female: 0,
-        "non-binary": 0
-    };
-    let male = _.reduce(array, function(sum, current) {
-        if (current.gender === "male") {
-            sum = result.male++
-        }
-        return sum
-    }, 0);
-    let female = _.reduce(array, function(sum, current) {
-        if (current.gender === "female") {
-            sum = result.female++
-        }
-        return sum
-    }, 0);
-    let neither = _.reduce(array, function(sum, current) {
-        if (current.gender === "non-binary") {
-            sum = result['non-binary']++
-        }
-        return sum
-    }, 0);
+        male: _.reduce(array, function(sum, current) {
+            if (current.gender === "male") {
+                sum++;
+            }
+            return sum;
+        }, 0),
+        female: _.reduce(array, function(sum, current) {
+            if (current.gender === "female") {
+                sum++;
+            }
+            return sum;
+        }, 0),
+        "non-binary": _.reduce(array, function(sum, current) {
+            if (current.gender === "non-binary") {
+                sum++;
+            }
+            return sum;
+        }, 0)
+    }
     return result;
-};
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
