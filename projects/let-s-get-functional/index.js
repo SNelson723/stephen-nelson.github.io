@@ -39,12 +39,12 @@ var femaleCount = function(array) {
         }
         return sum;
     }, 0);
-    return females;``
+    return females;
 };
 
 
-var oldestCustomer = function(array) {
-    let oldest = _.reduce(array, function(accumulator, current, i) {
+var oldestCustomer = (array) => {
+    let oldest = _.reduce(array, function(accumulator, current) {
         let customer = accumulator;
         if (current.age > accumulator.age) {
             customer = current.name;
@@ -55,7 +55,7 @@ var oldestCustomer = function(array) {
 };
 
 var youngestCustomer = function(array) {
-    let oldest = _.reduce(array, function(accumulator, current, i) {
+    let oldest = _.reduce(array, function(accumulator, current) {
         let customer = current;
         if (current.age > accumulator.age) {
             customer = accumulator.name;
@@ -67,11 +67,42 @@ var youngestCustomer = function(array) {
 
 var averageBalance;
 
-var firstLetterCount;
+var firstLetterCount = function(array, char) {
+    let count = _.filter(array, function(customer) {
+        if(customer.name[0] === char.toUpperCase() || customer.name[0] === char.toLowerCase()) {
+            return customer.name;
+        }
+    })
+    return count.length;
+};
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = (array, customer, char) => {
+    let count = 0;
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].name === customer) {
+            for (let j = 0; j < array[i].friends.length; j++) {
+                if (array[i].friends[j].name[0] === char.toUpperCase()) {
+                    count++;
+                } else if (array[i].friends[j].name[0] === char.toLowerCase()) {
+                    count++;
+                }
+            }
+        }
+    }
+    return count;
+};
 
-var friendsCount;
+var friendsCount = (array, name) => {
+    // let fCount = [];
+    // for (let i = 0; i < array.length; i++) {
+    //     for (let j = 0; j < array[i].friends.length; j++) {
+    //         if (array[i].friends[j].name === name) {
+    //             fCount.push(array[i].name); 
+    //         }
+    //     }
+    // }
+    // return fCount;
+};
 
 var topThreeTags;
 
