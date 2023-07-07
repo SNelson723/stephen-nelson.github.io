@@ -105,24 +105,24 @@ var friendsCount = (array, name) => {
 };
 
 var topThreeTags = (array) => {
-    
+
 };
 
 var genderCount = (array) => {
     let result = {
-        male: _.reduce(array, function(sum, current) {
+        male: _.reduce(array, (sum, current) => {
             if (current.gender === "male") {
                 sum++;
             }
             return sum;
         }, 0),
-        female: _.reduce(array, function(sum, current) {
+        female: _.reduce(array, (sum, current) => {
             if (current.gender === "female") {
                 sum++;
             }
             return sum;
         }, 0),
-        "non-binary": _.reduce(array, function(sum, current) {
+        "non-binary": _.reduce(array, (sum, current) => {
             if (current.gender === "non-binary") {
                 sum++;
             }
