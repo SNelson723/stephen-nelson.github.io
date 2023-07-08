@@ -70,44 +70,50 @@ var averageBalance = (array) => {
 };
 
 var firstLetterCount = function(array, char) {
-    let count = _.filter(array, function(customer) {
-        if(customer.name[0] === char.toUpperCase() || customer.name[0] === char.toLowerCase()) {
-            return customer.name;
+    // let count = _.filter(array, function(customer) {
+    //     if(customer.name[0] === char.toUpperCase() || customer.name[0] === char.toLowerCase()) {
+    //         return customer.name;
+    //     }
+    // })
+    // return count.length;
+    let count = _.reduce(array, (total, index) => {
+        if (index.name.charAt(0) === char.toUpperCase() || index.name.charAt(0) === char.toLowerCase()) {
+            total++;
         }
-    })
-    return count.length;
+        return total;
+    }, 0);
+    return count;
 };
 
 var friendFirstLetterCount = (array, customer, char) => {
     let count = 0;
     for (let i = 0; i < array.length; i++) {
         if (array[i].name === customer) {
-            for (let j = 0; j < array[i].friends.length; j++) {
-                if (array[i].friends[j].name[0] === char.toUpperCase()) {
-                    count++;
-                } else if (array[i].friends[j].name[0] === char.toLowerCase()) {
+            _.reduce(array[i].friends, (current) => {
+                if (current.name[0] === char.toLowerCase() || current.name[0] === char.toUpperCase()) {
                     count++;
                 }
-            }
+            }, 0);
         }
     }
     return count;
 };
 
 var friendsCount = (array, name) => {
-    let fCount = [];
+    let count = [];
     for (let i = 0; i < array.length; i++) {
-        for (let j = 0; j < array[i].friends.length; j++) {
-            if (array[i].friends[j].name === name) {
-                fCount.push(array[i].name); 
+        _.filter(array[i].friends, (index) => {
+            if (index.name === name) {
+                 count.push(array[i].name);
             }
-        }
+        })
     }
-    return fCount;
+    return count;
 };
 
 var topThreeTags = (array) => {
-    
+    let tags = _.map(array, () => {});
+    return tags;
 };
 
 var genderCount = (array) => {
