@@ -26,14 +26,12 @@ var _ = require('underbar');
  */
 
 var maleCount = function(array) {
-    let males = _.filter(array, function(customer) {
-        return customer.gender === "male";
-    })
+    let males = _.filter(array, (customer) => {return customer.gender === "male"});
     return males.length;
 };
 
 var femaleCount = function(array) {
-    let females = _.reduce(array, function(sum, customer) {
+    let females = _.reduce(array, (sum, customer) => {
         if (customer.gender === "female") {
             sum++;
         }
@@ -70,6 +68,7 @@ var averageBalance = (array) => {
     let total = _.map(array, (current) => {
         current = current.balance.replace('$', '').replace(",", '');
         parseInt(current);
+        return current;
     });
     for (let i = 0; i < total.length; i++) {
         balance += total[i];
