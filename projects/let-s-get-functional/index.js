@@ -66,16 +66,15 @@ var youngestCustomer = function(array) {
 };
 
 var averageBalance = (array) => {
-
+    // let average = _.reduce(array, (total, current) => {
+    //     current.balance = current.balance.replace(/, /, '');
+    //     total += current.balance.parseFloat(current.balance);
+    //     return total;
+    // }, 0);
+    // return average / array.length;
 };
 
 var firstLetterCount = function(array, char) {
-    // let count = _.filter(array, function(customer) {
-    //     if(customer.name[0] === char.toUpperCase() || customer.name[0] === char.toLowerCase()) {
-    //         return customer.name;
-    //     }
-    // })
-    // return count.length;
     let count = _.reduce(array, (total, index) => {
         if (index.name.charAt(0) === char.toUpperCase() || index.name.charAt(0) === char.toLowerCase()) {
             total++;
@@ -87,15 +86,15 @@ var firstLetterCount = function(array, char) {
 
 var friendFirstLetterCount = (array, customer, char) => {
     let count = 0;
-    for (let i = 0; i < array.length; i++) {
-        if (array[i].name === customer) {
-            _.reduce(array[i].friends, (current) => {
-                if (current.name[0] === char.toLowerCase() || current.name[0] === char.toUpperCase()) {
+    _.filter(array, (current) => {
+        if (customer === current.name) {
+            for (let i = 0; i < current.friends.length; i++) {
+                if (current.friends[i].name[0] === char.toUpperCase() || current.friends[i].name[0] === char.toLowerCase()) {
                     count++;
                 }
-            }, 0);
+            }
         }
-    }
+    });
     return count;
 };
 
@@ -112,7 +111,7 @@ var friendsCount = (array, name) => {
 };
 
 var topThreeTags = (array) => {
-    let tags = _.map(array, () => {});
+    let tags = _.map(array, (current) => {});
     return tags;
 };
 
