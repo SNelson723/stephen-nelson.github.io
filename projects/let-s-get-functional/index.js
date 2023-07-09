@@ -30,7 +30,7 @@ var maleCount = function(array) {
         return customer.gender === "male";
     })
     return males.length;
-};``
+};
 
 var femaleCount = function(array) {
     let females = _.reduce(array, function(sum, customer) {
@@ -66,12 +66,15 @@ var youngestCustomer = function(array) {
 };
 
 var averageBalance = (array) => {
-    // let average = _.reduce(array, (total, current) => {
-    //     current.balance = current.balance.replace(/, /, '');
-    //     total += current.balance.parseFloat(current.balance);
-    //     return total;
-    // }, 0);
-    // return average / array.length;
+    let balance = 0;
+    let total = _.map(array, (current) => {
+        current = current.balance.replace('$', '').replace(",", '');
+        parseInt(current);
+    });
+    for (let i = 0; i < total.length; i++) {
+        balance += total[i];
+    }
+    return balance / array.length
 };
 
 var firstLetterCount = function(array, char) {
@@ -111,8 +114,30 @@ var friendsCount = (array, name) => {
 };
 
 var topThreeTags = (array) => {
-    let tags = _.map(array, (current) => {});
-    return tags;
+    const obj = {};
+    let topTags = [];
+    let result = [];
+    _.reduce(array, (reduced, current) => {
+        for (let i = 0; i < current.tags.length; i++) {
+            if (obj[current.tags[i]]) {
+                obj[current.tags[i]]++;
+            } else {
+                obj[current.tags[i]] = 1;
+            }
+        }
+        return reduced;
+    });
+    for (let key in obj) {
+        topTags.push(obj[key]);
+    }
+    topTags.sort((a, b) => {return a - b});
+    
+    for (let key in obj) {
+        if (obj[key] === topTags[0] || obj[key] === topTags[1] || obj[key] === topTags[2]) {
+            result.push(key);
+        }
+    }
+    return result;
 };
 
 var genderCount = (array) => {
