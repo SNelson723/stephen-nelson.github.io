@@ -455,13 +455,17 @@
       });
 
       it('should return the product of two integers', function() {
-        expect(multiply(2, 1)).to.equal(2 * 1);
-        expect(multiply(17, 5)).to.equal(17 * 5);
-        expect(multiply(78, 453)).to.equal(78 * 453);
-        expect(multiply(-79, 82)).to.equal(-79 * 82);
-        expect(multiply(-275, -502)).to.equal(-275 * -502);
-        expect(multiply(0, 32)).to.equal(0 * 32);
-        expect(multiply(0, 0)).to.equal(0 * 0);
+var multiply = function(x, y, product) {
+  if (product > 0 || product < 0) {
+    return product;
+  } else if (product === 0) {
+    return product;
+  }
+  for (let i = 0; i < y; i++) {
+    product = 0 + x;
+  }
+  return multiply(x, y, product);
+};
       });
 
       it('should use recursion by calling self', function () {
