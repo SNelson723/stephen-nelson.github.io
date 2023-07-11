@@ -58,7 +58,7 @@ var isEven = function(n) {
     n *= -1; //convert n to positive integer 
   }
   //recursive
-  return isEven(n -= 2); //decrement n by 2 until base case is reached
+  return isEven(n - 2); //decrement n by 2 until base case is reached
 };
 
 // 5. Sum all integers below a given integer.
@@ -144,7 +144,9 @@ var exponent = function(base, exp, product = 0) {
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
   //base
-  if (n !== 0) {
+  if (n === 1 ) {
+    return true;
+  } else if (n % 2 !== 0 || n === 0) {
     return false;
   }
   //recursion
@@ -167,6 +169,16 @@ var reverse = function(string, reversed = string) {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  //base
+  if (string.length < 2) {
+    return true;
+  } else if (string[0].toLowerCase() !== string[string.length - 1].toLowerCase()) {
+     return false;
+  } else if (string[0].toLowerCase() === string[string.length -1].toLowerCase()) {
+    string.slice(1);
+  }
+  //recursion
+  return palindrome(string.slice(-1));
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
