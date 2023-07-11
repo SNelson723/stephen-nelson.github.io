@@ -66,14 +66,13 @@ var youngestCustomer = function(array) {
 var averageBalance = (array) => {
     let balance = 0;
     let total = _.map(array, (current) => {
-        current = current.balance.replace('$', '').replace(",", '');
-        parseInt(current);
-        return current;
+        current = current.balance.replace(/[$,]/g, '');
+        return Number(current);
     });
     for (let i = 0; i < total.length; i++) {
         balance += total[i];
     }
-    return balance / array.length
+    return balance / array.length;
 };
 
 var firstLetterCount = function(array, char) {
@@ -113,30 +112,23 @@ var friendsCount = (array, name) => {
 };
 
 var topThreeTags = (array) => {
-    const obj = {};
-    let topTags = [];
-    let result = [];
-    _.reduce(array, (reduced, current) => {
-        for (let i = 0; i < current.tags.length; i++) {
-            if (obj[current.tags[i]]) {
-                obj[current.tags[i]]++;
-            } else {
-                obj[current.tags[i]] = 1;
-            }
+    let count = {};
+    let result;
+   let tags = [];
+   _.filter(array, (index) => {
+        for (let i = 0; i < index.tags.length; i++) {
+            tags.push(index.tags[i]);
         }
-        return reduced;
-    });
-    for (let key in obj) {
-        topTags.push(obj[key]);
-    }
-    topTags.sort((a, b) => {return a - b});
-    
-    for (let key in obj) {
-        if (obj[key] === topTags[0] || obj[key] === topTags[1] || obj[key] === topTags[2]) {
-            result.push(key);
+   })
+    for (let i = 0; i < tags.length; i++) {
+        if (!count.hasOwnProperty(tags[i])) {
+            count.tags[i] = 1;
+        } else if (count.hasOwnProperty(tags[i])) {
+            count.tags[i] += 1;
         }
     }
-    return result;
+    result = Object.entries(count).sort((a, b) => {return b[1] - a[1]});
+    return count;
 };
 
 var genderCount = (array) => {
