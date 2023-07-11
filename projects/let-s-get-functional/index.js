@@ -111,24 +111,15 @@ var friendsCount = (array, name) => {
     return count;
 };
 
-var topThreeTags = (array) => {
-    let count = {};
-    let result;
-   let tags = [];
-   _.filter(array, (index) => {
-        for (let i = 0; i < index.tags.length; i++) {
-            tags.push(index.tags[i]);
-        }
-   })
-    for (let i = 0; i < tags.length; i++) {
-        if (!count.hasOwnProperty(tags[i])) {
-            count.tags[i] = 1;
-        } else if (count.hasOwnProperty(tags[i])) {
-            count.tags[i] += 1;
-        }
+var topThreeTags = (array, result = []) => {
+    let tags = [];
+    for (let i = 0; i < array.length; i++) {
+        _.filter(array[i].tags, (index) => {
+            return tags.push([index, 1]);
+        })
     }
-    result = Object.entries(count).sort((a, b) => {return b[1] - a[1]});
-    return count;
+
+    return [...new Set(tags)];
 };
 
 var genderCount = (array) => {
