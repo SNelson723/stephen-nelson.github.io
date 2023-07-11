@@ -144,13 +144,11 @@ var exponent = function(base, exp, product = 0) {
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
   //base
-  if ((n / 2 === 0 && n !== 0) || n === 1) {
-    return true;
-  } else if (n / 2 !== 2 || n === 0) {
+  if (n !== 0) {
     return false;
   }
   //recursion
-  return powerOfTwo(n / 2);
+  return powerOfTwo(n / 2); 
 };
 
 // 9. Write a function that accepts a string a reverses it.
