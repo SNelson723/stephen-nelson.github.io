@@ -115,10 +115,11 @@ var topThreeTags = (array, result = []) => {
     let tags = [];
     let count = {};
     for (let i = 0; i < array.length; i++) {
-        _.filter(array[i].tags, (index) => {
-            return tags.push(index);
-        })
+        for (let j = 0; j < array[i].tags.length; j++) {
+            tags.push(array[i].tags[j]);
+        }
     }
+    _.reduce()
     return result;
 };
 
