@@ -66,14 +66,20 @@ var isEven = function(n) {
 // sumBelow(7); // 21
 var sumBelow = function(n, sum = 0) {
 //base
-  if (n === 0) {
+  if (n === 0) { //once n has been decremented/incremented to 0
+    //return sum
     return sum;
+  }
   //recursive callback functions based on pos/neg integers
-  } else if (n > 0) {
+  if (n > 0) { //if n is positive
     sum += (n - 1);
-    return sumBelow((n -1), sum);
+    // invoke callback function (positive case)
+    return sumBelow((n - 1), sum);
+    //if n is negative
   } else if (n < 0) {
+    //add one up from neg number to sum
     sum += (n + 1);
+    //invoke callback function for (negative case)
     return sumBelow((n + 1), sum)
   }
 };
@@ -310,9 +316,17 @@ var countOccurrence = function(array, value, count = 0) {
 
 // 20. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
-var rMap = function(array, callback) {
+var rMap = function(array, callback, map = []) { //callback is the function invoked for every element
   // base
+  if (array.length === 0) {
+    //return new array with modified values
+    return map;
+  }
   // recursion
+  //push array[0] as the parameter in the callback parameter
+  map.push(callback(array[0]));
+  //invoke parent function's callback function
+  return rMap(array.slice(1), callback, map);
 };
 
 // 21. Write a function that counts the number of times a key occurs in an object.
@@ -348,17 +362,49 @@ var fibonacci = function(n) {
 // nthFibo(7); // 13
 // nthFibo(3); // 2
 var nthFibo = function(n) {
+  // base
+  if (n < 0) {
+    //return null for neg nums
+    return null;
+    //if at beginning of sequence
+  } else if (n < 2) {
+    //return n
+    return n;
+  }
+  // recursion
+  if (n >= 2) {
+    //invoke callback function
+    return nthFibo(n - 1) + nthFibo(n - 2)
+  }
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
 // capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
-var capitalizeWords = function(input) {
+var capitalizeWords = function(input, capitalized = []) {
+  // base
+  if (input.length === 0) {
+    return capitalized;
+  }
+  // recursion
+  capitalized.push(input[0].toUpperCase());
+  //invoke callback function
+  return capitalizeWords(input.slice(1), capitalized)
 };
 
 // 27. Given an array of strings, capitalize the first letter of each index.
 // capitalizeFirst(['car', 'poop', 'banana']); // ['Car', 'Poop', 'Banana']
-var capitalizeFirst = function(array) {
+var capitalizeFirst = function(array, capped = []) {
+    // base
+    if (array.length === 0) {
+      //return new array with first characters capitalized
+      return capped;
+    }
+    // recursion
+    //separate first char and capitalize concat with rest of string
+    capped.push(array[0].charAt(0).toUpperCase() + array[0].slice(1));
+    //invoke callback function 
+    return capitalizeFirst(array.slice(1), capped)
 };
 
 // 28. Return the sum of all even numbers in an object containing nested objects.
@@ -375,12 +421,27 @@ var nestedEvenSum = function(obj) {
 
 // 29. Flatten an array containing nested arrays.
 // Example: flatten([1,[2],[3,[[4]]],5]); // [1,2,3,4,5]
-var flatten = function(arrays) {
+var flatten = function(arrays, array = []) {
+  if (arrays.length === 0) {
+    return array;
+  }
+  
 };
 
 // 30. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {'p':1, 'o':2, 't':2, 'a':1}
-var letterTally = function(str, obj) {
+var letterTally = function(str, obj = {}) {
+  // base
+  if (str.length === 0) {
+    return obj;
+  }
+  // recursion
+  if (obj.hasOwnProperty(str[0])) {
+    obj[str[0]]++;
+  } else {
+    obj[str[0]] = 1;
+  }
+  return letterTally(str.slice(1), obj);
 };
 
 // 31. Eliminate consecutive duplicates in a list.  If the list contains repeated
