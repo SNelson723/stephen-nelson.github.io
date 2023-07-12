@@ -537,7 +537,62 @@ var alternateSign = function(array, alt = []) {
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
-var numToText = function(str) {
+var numToText = function(str, newStr = []) {
+  // base: join newStr into a string and exit function
+  if (str.length === 0) {
+    return newStr.join(" ");
+  }
+  // recursion
+  //convert str to array
+  if (!Array.isArray(str)) {
+    str = str.split(" ");
+  }
+  // determine if index is a single digit string 1 - 9 and replace the text equivilant
+  if (str[0] === '0') {
+    str[0] = 'zero';
+    newStr.push(str[0]);
+    //if index === '1'
+  } else if (str[0] === '1') {
+      str[0] = 'one';
+      newStr.push(str[0]);
+    //if index === '2'
+  } else if (str[0] === '2') {
+      str[0] = 'two';
+      newStr.push(str[0]);
+    // if index === '3'
+  } else if (str[0] === '3') {
+      str[0] = 'three';
+      newStr.push(str[0]);
+    //if index === '4'
+  } else if (str[0] === '4') {
+      str[0] = 'four';
+      newStr.push(str[0]);
+    //if index === '5'
+  } else if (str[0] === '5') {
+      str[0] = 'five';
+      newStr.push(str[0]);
+    //if index === '6
+  } else if (str[0] === '6') {
+      str[0] = 'six';
+      newStr.push(str[0]);
+    // if index === '7'
+  } else if (str[0] === '7') {
+      str[0] = 'seven';
+      newStr.push(str[0]);
+    // if index === '8'
+  } else if (str[0] === '8') {
+      str[0] = 'eight';
+      newStr.push(str[0]);
+    //if index === '9'
+  } else if (str[0] === '9') {
+      str[0] = 'nine';
+      newStr.push(str[0]);
+    //push all other values into newStr
+  } else {
+      newStr.push(str[0]);
+  }
+  // invoke callback function
+  return numToText(str.slice(1), newStr);
 };
 
 // *** EXTRA CREDIT ***
