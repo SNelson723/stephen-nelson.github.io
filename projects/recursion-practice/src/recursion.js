@@ -239,7 +239,9 @@ var compareStr = function(str1, str2) {
   //determine if strings are not identical
   if (str1[0] !== str2[0]) {
     return false
+    //determind if strings are both empty/undefined
   } else if (str1 === "" && str2 === "") {
+    //returning true means each character was a match
       return true;
   }
   //recursion
@@ -249,27 +251,68 @@ var compareStr = function(str1, str2) {
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
 var createArray = function(str){
+  //base
+  if (Array.isArray(str)) {
+    return str;
+  }
+  // recursion
+  str = str.split("");
+  //invoke callback function
+  return createArray(str);
 };
 
 // 17. Reverse the order of an array
-var reverseArr = function (array) {
+var reverseArr = function (array, reversed = []) {
+  // base
+  if (array.length === 0) {
+    // return reversed array
+    return reversed;
+  }
+  // recursion
+  reversed.unshift(array[0]);
+  //invoke callback function
+  return reverseArr(array.slice(1), reversed);
 };
 
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
-var buildList = function(value, length) {
+var buildList = function(value, length, array = []) {
+  //base
+  //exit once array.length === length
+  if (array.length === length) {
+    // return full array
+    return array;
+  }
+  //recursion
+  array.push(value);
+  //invoke callback function
+  return buildList(value, length, array);
 };
 
 // 19. Count the occurence of a value inside a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
-var countOccurrence = function(array, value) {
+var countOccurrence = function(array, value, count = 0) {
+  // base
+  if (array.length === 0) {
+    //return final count
+    return count;
+  }
+  // recursion
+  if (array[0] === value) {
+    //if true, count increments
+    count++
+  }
+  //invoke callback function
+  return countOccurrence(array.slice(1), value, count);
 };
 
 // 20. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
 var rMap = function(array, callback) {
+  // base
+  // recursion
 };
 
 // 21. Write a function that counts the number of times a key occurs in an object.

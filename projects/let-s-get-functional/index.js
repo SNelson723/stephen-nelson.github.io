@@ -2,7 +2,7 @@
 
 'use strict';
 
-const { countBy, castArray } = require('lodash');
+const { countBy, castArray, assign } = require('lodash');
 var customers = require('./data/customers.json');
 var _ = require('underbar');
 
@@ -113,13 +113,13 @@ var friendsCount = (array, name) => {
 
 var topThreeTags = (array, result = []) => {
     let tags = [];
+    let count = {};
     for (let i = 0; i < array.length; i++) {
         _.filter(array[i].tags, (index) => {
-            return tags.push([index, 1]);
+            return tags.push(index);
         })
     }
-
-    return [...new Set(tags)];
+    return result;
 };
 
 var genderCount = (array) => {
