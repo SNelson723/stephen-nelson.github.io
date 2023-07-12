@@ -450,7 +450,7 @@ var letterTally = function(str, obj = {}) {
 // Example: compress([1, 2, 2, 3, 4, 4, 5, 5, 5]) // [1, 2, 3, 4, 5]
 // Example: compress([1, 2, 2, 3, 4, 4, 2, 5, 5, 5, 4, 4]) // [1, 2, 3, 4, 2, 5, 4]
 var compress = function(list, comp = []) {
-  // base
+  // base: exit function once list.length === 0
   if (list.length === 0) {
     //return new array
     return comp;
@@ -460,7 +460,7 @@ var compress = function(list, comp = []) {
   if (!comp.includes(list[0])) {
     //if not, push value into new array
     comp.push(list[0]);
-    //determine if value doesn't come before a duplicate 
+    //determine if list[0] exists in comp AND doesn't match the last value in comp
   } else if (comp.includes(list[0]) && list[0] !== comp[comp.length - 1]) {
     comp.push(list[0]);
   }
@@ -477,7 +477,20 @@ var augmentElements = function(array, aug) {
 // 33. Reduce a series of zeroes to a single 0.
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
-var minimizeZeroes = function(array) {
+var minimizeZeroes = function(array, minimizeZero = []) {
+  // base: exit function when array.length === 0
+  if (array.length === 0) {
+    return minimizeZero;
+  }
+  // recursion
+  // determine if array[0] is 0 AND doesn't === last value in minimizeZero
+  if (array[0] === 0 && array[0] !== minimizeZero[minimizeZero.length - 1]) {
+    minimizeZero.push(array[0]);
+  } else if (array[0] !== 0) {
+    minimizeZero.push(array[0])
+  }
+  //invoke callback function
+  return minimizeZeroes(array.slice(1), minimizeZero);
 };
 
 // 34. Alternate the numbers in an array between positive and negative regardless of
