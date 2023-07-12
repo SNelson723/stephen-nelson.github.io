@@ -462,6 +462,7 @@ var compress = function(list, comp = []) {
     comp.push(list[0]);
     //determine if list[0] exists in comp AND doesn't match the last value in comp
   } else if (comp.includes(list[0]) && list[0] !== comp[comp.length - 1]) {
+    //push the value into comp
     comp.push(list[0]);
   }
   //invoke callback function
@@ -480,14 +481,16 @@ var augmentElements = function(array, aug) {
 var minimizeZeroes = function(array, minimizeZero = []) {
   // base: exit function when array.length === 0
   if (array.length === 0) {
+    // return final array
     return minimizeZero;
   }
   // recursion
   // determine if array[0] is 0 AND doesn't === last value in minimizeZero
   if (array[0] === 0 && array[0] !== minimizeZero[minimizeZero.length - 1]) {
     minimizeZero.push(array[0]);
+    //push all values !== 0
   } else if (array[0] !== 0) {
-    minimizeZero.push(array[0])
+    minimizeZero.push(array[0]);
   }
   //invoke callback function
   return minimizeZeroes(array.slice(1), minimizeZero);
@@ -497,7 +500,38 @@ var minimizeZeroes = function(array, minimizeZero = []) {
 // their original sign.  The first number in the index always needs to be positive.
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
-var alternateSign = function(array) {
+var alternateSign = function(array, alt = []) {
+  // base: exit once array.length === 0
+  if (array.length === 0) {
+    //return final alteranting array
+    return alt;
+  }
+  //recursion
+  //determine if value isn't zero and determine whether the number should be pos or neg based on alt.length
+  //determine if array[0] !== 0
+  if (array[0] !== 0) {
+    //if position needs a positive value
+    if (alt.length === 0 || alt.length % 2 === 0) {
+      //if array[0] > 0
+      if (array[0] > 0) {
+        alt.push(array[0]);
+      //else if array[0] < 0
+      } else {
+        alt.push(array[0] *= -1)
+      }
+    //if position needs a negative value
+    } else if (alt.length % 2 !== 0) {
+      //if array[0] < 0
+      if (array[0] < 0) {
+        alt.push(array[0]);
+      //if array[0] > 0
+      } else {
+        alt.push(array[0] *= -1);
+      }
+    }
+  }
+  //invoke callback function with updated arrays
+  return alternateSign(array.slice(1), alt);
 };
 
 // 35. Given a string, return a string with digits converted to their word equivalent.
