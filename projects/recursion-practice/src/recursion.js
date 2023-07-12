@@ -211,6 +211,7 @@ var modulo = function(x, y) {
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
 var multiply = function(x, y, product = 0) {
+
   if (product > 0 || product < 0) {
     return product;
   } else if (x === 0 || y === 0) {
