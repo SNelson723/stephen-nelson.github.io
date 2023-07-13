@@ -114,28 +114,11 @@ var friendsCount = (array, name) => {
 var topThreeTags = (array, result = []) => {
     let tags = [];
     for (let i = 0; i < array.length; i++) {
-        for (let j = 0; j < array[i].tags.length; j++) {
-            tags.push(array[i].tags[j]);
-        }
+        
     }
-    let count = _.reduce(tags, (accum, current, sum = 1) => {
-        accum.push(current);
-        if (current === current - 1) {
-            (current - 1) = [current, sum++];
-        }
-        return accum;
-    }, []);
-    return count;
+    return tags;
 };  
 
-/**
- * 
-arr.reduce(function(obj, item) {
-  obj[item] = (obj[item] || 0) + 1;
-  return obj;
-}, {});} array 
- * @returns 
- */
 
 var genderCount = (array) => {
     let result = {
