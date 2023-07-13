@@ -113,10 +113,26 @@ var friendsCount = (array, name) => {
 
 var topThreeTags = (array, result = []) => {
     let tags = [];
+    let count = {};
     for (let i = 0; i < array.length; i++) {
-        
+        for (let j = 0; j < array[i].tags.length; j++) {
+            tags.push(array[i].tags[j]);
+            if (!count.hasOwnProperty(array[i].tags[j])) {
+                count[array[i].tags[j]] = 0;
+            }
+        }
     }
-    return tags;
+    for (let i = 0; i < tags.length; i++) {
+        if (count.hasOwnProperty(tags[i])) {
+            count[tags[i]] += 1;
+        }
+    }
+    for (let key in count) {
+        if (count[key] > 2) {
+            result.push(key);
+        }
+    }
+    return result;
 };  
 
 
