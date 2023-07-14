@@ -44,8 +44,9 @@ function reverseArray(array, reversed = []) {
 
 function reverseArrayInPlace(array) {
   let temp = [];
-  for (let i = array.length - 1; i <= 0; i--) {
+  for (let i = array.length - 1; i >= 0; i--) {
     temp.push(array[i]);
+    array.pop(array[i]);
   }
   for (let i = 0; i < temp.length; i++) {
     array.push(temp[i]);
