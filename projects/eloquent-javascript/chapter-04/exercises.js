@@ -85,23 +85,40 @@ function listToArray(list, array = []) {
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend() { //discuss on Monday
-
+function prepend(value, list) {
+  //create a new object and initialize value property with the value argument
+  let newList = {
+    value,
+    rest: list //rest property contains the arrayToList function which extends the list beyond the new value
+  };
+  //return new object with the value argument at the beginning of the list
+  return newList;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // nth /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function nth() { //discuss on Monday
-
+function nth(list, num) { //discuss on Monday
+  //if num === 0
+  if ( num === 0) {
+      // return current value of value property
+      return list.value;
+    //if num > 0
+  } else if (num > 0) {
+      //keep iterating through the rest lists until the specified value is reached
+      return nth(list.rest, num - 1); //num acts as a recursive anchor to find specific values
+  } else {
+    //if num given doesn't point to a defined value property, return undefined
+      return undefined;
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function deepEqual() {
+function deepEqual(obj1, obj2) {
 
 }
 
