@@ -63,11 +63,11 @@ _.typeOf = function(value) {
         return "array"; //return "array"
     } else if (typeof value === "string") { //if string
         return "string"; //return "string"
-    } else if (typeof value === "number") { //if number
+    } else if (value < 0 || value === 0 || value > 0) { //if number
         return "number"; //return "number"
-    } else if (typeof value === "undefined") { //if undefined
+    } else if (value === undefined) { //if undefined
         return "undefined"; //return "undefined"
-    } else if (typeof value === "boolean") { //if boolean
+    } else if (value === true || value === false) { //if boolean
         return "boolean"; //return "boolean"
     } else if (typeof value === "function") { //if function
         return "function"; //return "function"
