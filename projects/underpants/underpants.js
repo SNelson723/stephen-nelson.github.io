@@ -666,31 +666,34 @@ _.reduce = function(array, test, seed) {
 */
 
 //declare function
-_.extend = function(object1, object2) {
-    //loop over object2
-    for (let key in object2) {
-        //determine if object1 has object2[key]
-        if (!object1.hasOwnProperty(object2[key])) {
-            //if not: then assign object2[key] to object1
-            object1[key] = object2[key];
-            }
-        }
-        //if more than 2 arguments are passed
-        if (arguments) {
-            //iterate through arguments (arrays)
-            for (let i = 0; i < arguments.length; i++) {
-                //loop over nested objects
-                for (let key in arguments[i]) {
-                    //determine if the properties don't exist in object1
-                    if (!object1.hasOwnProperty(arguments[i][key])) {
-                        //if so: assign the property to object1
-                        object1[key] = arguments[i][key];
-                    }
-                }
-            }
-        }
-    //return updated object1
-    return object1;
+_.extend = function(object1, object2, ...objects) {
+    //UPDATED ANSWER post week 4 Bootcamp
+    return Object.assign(object1, object2, ...objects)
+
+    // //loop over object2
+    // for (let key in object2) {
+    //     //determine if object1 has object2[key]
+    //     if (!object1.hasOwnProperty(object2[key])) {
+    //         //if not: then assign object2[key] to object1
+    //         object1[key] = object2[key];
+    //         }
+    //     }
+    //     //if more than 2 arguments are passed
+    //     if (arguments) {
+    //         //iterate through arguments (arrays)
+    //         for (let i = 0; i < arguments.length; i++) {
+    //             //loop over nested objects
+    //             for (let key in arguments[i]) {
+    //                 //determine if the properties don't exist in object1
+    //                 if (!object1.hasOwnProperty(arguments[i][key])) {
+    //                     //if so: assign the property to object1
+    //                     object1[key] = arguments[i][key];
+    //                 }
+    //             }
+    //         }
+    //     }
+    // //return updated object1
+    // return object1;
 }
 
 //////////////////////////////////////////////////////////////////////
