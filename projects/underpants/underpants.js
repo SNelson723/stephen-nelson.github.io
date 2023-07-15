@@ -98,7 +98,7 @@ _.typeOf = function(value) {
 */
 
 // declare function
-_.first = function(array, number) {
+_.first = function(array, number, output = []) {
     //determine if array !== "array" OR if number < 0
     if (!Array.isArray(array) || number < 0) {
         //return []
@@ -110,7 +110,6 @@ _.first = function(array, number) {
     } else if (number > array.length) {
         return array; //returns full array
     } else { //if number is between 0 and array.length
-        let output = []; //need empty array
         //loop over array
         for (let i = 0; i < array.length; i++) {
             //run code if i < number

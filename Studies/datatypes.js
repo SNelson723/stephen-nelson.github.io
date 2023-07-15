@@ -1,4 +1,44 @@
-//                   OBJECTS AND ARRAYS
+// 
+
+// DATATYPES
+
+/**
+ * OVERVIEW:
+ *    Datatypes are categories for different types of data and are split into TWO main categories. Text
+ *    editors recognize these as built-in data structures and which properties they are compatable
+ *    with. This allows developers to track, store, and mutate the data in their code as required. With 
+ *    that in mind, JavaScript is a weakly typed and dynamic language. Dynamic means that variables are not
+ *    directly associated with any specific datatype and these variables can be either assigned/re-assigned
+ *    depending on the keyword used to declare the variables with. Weakly typed means JavaScript is allowed 
+ *    type coercion (type conversion) an execution involves mismatched types (reduces amount of error messages).
+ * 
+ * There TWO main categories are as follows:
+ * 
+ *  Simple/primitive:
+ *      String
+ *      Number
+ *      NaN
+ *      Undefined
+ *      Boolean
+ *      Null
+ * 
+ *  Complex:
+ *      Object
+ *      Array
+ *      Function
+ */
+
+/**
+ * SIMPLE/PRIMITIVE DATATYPES: Types of data that point to one specific simple value that is considered
+ * atomic/mutable meaning they do not point to any other value and any operations using these datatypes
+ * does not alter the value but rather produces a NEW value as a result. Second, simple datatypes, when
+ * copied, are copied by value meaning the values are copied from one variable to the next.
+ */
+
+
+
+
+//OBJECTS AND ARRAYS
 
 /*
 * Objects and Arrays are both complex datatypes used in JavaScript to hold collections 
