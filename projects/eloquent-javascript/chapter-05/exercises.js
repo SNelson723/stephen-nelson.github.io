@@ -32,11 +32,15 @@ function loop(value, test, update, body) {
 // /////////////////////////////////////////////////////////////////////////////
 
 function every(array, test) {
+  //iterate through array
   for (let i = 0; i < array.length; i++) {
+    //determine if any of the elements return a false test
     if(!test(array[i])) {
+      //return false
       return false;
     }
   }
+  //if all elements pass => return true
   return true;
 }
 
