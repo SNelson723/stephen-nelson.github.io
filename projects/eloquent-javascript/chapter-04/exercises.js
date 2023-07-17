@@ -49,13 +49,16 @@ function reverseArray(array, reversed = []) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function reverseArrayInPlace(array, temp = []) {
+  //loop over array in reverse and push element into temp array and pop that element out of array
   for (let i = array.length - 1; i >= 0; i--) {
     temp.push(array[i]);
     array.pop(array[i]);
   }
+  //push all elements back into array so they are in reverse (array is mutated)
   for (let i = 0; i < temp.length; i++) {
     array.push(temp[i]);
   }
+  //return reversed original array
   return array;
 }
 
