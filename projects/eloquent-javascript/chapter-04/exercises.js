@@ -48,8 +48,7 @@ function reverseArray(array, reversed = []) {
 // reverseArrayInPlace /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArrayInPlace(array) {
-  let temp = [];
+function reverseArrayInPlace(array, temp = []) {
   for (let i = array.length - 1; i >= 0; i--) {
     temp.push(array[i]);
     array.pop(array[i]);
