@@ -21,9 +21,12 @@ function range(a, b, step = 1) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function sum(array, sum = 0) {
+  //iterate through array
   for (let i = 0; i < array.length; i++) {
+    //update sum
     sum += array[i];
   }
+  //return sum
   return sum;
 }
 
@@ -32,9 +35,12 @@ function sum(array, sum = 0) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function reverseArray(array, reversed = []) {
+  //iterate through array in reverse
   for (let i = array.length - 1; i >= 0; i--) {
+    //push elements into reversed array
     reversed.push(array[i]);
   }
+  //return new array
   return reversed;
 }
 
