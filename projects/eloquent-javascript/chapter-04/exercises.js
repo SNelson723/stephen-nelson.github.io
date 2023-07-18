@@ -111,15 +111,12 @@ function nth(list, num) { //discuss on Monday
   //if num === 0
   if ( num === 0) {
       // return current value of value property
-      return list.value;
-    //if num > 0
-  } else if (num > 0) {
-      //keep iterating through the rest lists until the specified value is reached
-      return nth(list.rest, num - 1); //num acts as a recursive anchor to find specific values
-  } else {
-    //if num given doesn't point to a defined value property, return undefined
+    return list.value;
+  } else if (num < 0) {
+    //return undefined
       return undefined;
   }
+  return nth(list.rest, num - 1); //num acts as a recursive anchor to find specific values
 }
 
 ////////////////////////////////////////////////////////////////////////////////
