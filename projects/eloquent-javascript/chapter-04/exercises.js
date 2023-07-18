@@ -123,8 +123,41 @@ function nth(list, num) { //discuss on Monday
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function deepEqual(obj1, obj2) {
+function deepEqual(a, b) {
+  //determine if both params are not objects
+  if (typeof a !== 'object' && typeof b !== 'object') {
+    return a === b;
+    //determine if one is not an object
+  } else if (typeof a !== "object" || typeof b !== 'object') {
+    return false;
+  }
 
+  let keysA = Object.keys(a);
+  let keysB = Object.keys(b);
+
+  if (keysA.length !== keysB.length) {
+    return false;
+  }
+  for (let i = 0; i < keysA.length; i++) {
+    if (!keysB.includes(keysA[i] || !deepEqual(a[keysA[i]], b[keysB[i]]))) {
+      return false;
+    }
+  }
+
+  let valuesA = Object.values(a);
+  let valuesB = Object.values(b);
+
+  if (valuesA.length !== valuesB.length) {
+    return false;
+  }
+  
+  for (let i = 0; i < valuesA.length; i++) {
+    if (!valuesB.includes(valuesA[i])) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
