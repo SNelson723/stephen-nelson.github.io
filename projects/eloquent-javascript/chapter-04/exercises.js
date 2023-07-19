@@ -130,33 +130,25 @@ function deepEqual(a, b) {
     //determine if one is not an object
   } else if (typeof a !== "object" || typeof b !== 'object') {
     return false;
-  }
+    //if recursive => determine if both values passed are arrays and are identical
+  } 
 
+  //get arrays of the keys
   let keysA = Object.keys(a);
   let keysB = Object.keys(b);
 
+  //determine if the legnths are equal
   if (keysA.length !== keysB.length) {
     return false;
   }
+  //iterate through one of the arrays
   for (let i = 0; i < keysA.length; i++) {
-    if (!keysB.includes(keysA[i] || !deepEqual(a[keysA[i]], b[keysB[i]]))) {
+    //determine if one array includes the current key and determing if the values are not equal
+    if (!keysB.includes(keysA[i]) || !deepEqual(a[keysA[i]], b[keysB[i]])) {
       return false;
     }
   }
-
-  let valuesA = Object.values(a);
-  let valuesB = Object.values(b);
-
-  if (valuesA.length !== valuesB.length) {
-    return false;
-  }
-  
-  for (let i = 0; i < valuesA.length; i++) {
-    if (!valuesB.includes(valuesA[i])) {
-      return false;
-    }
-  }
-
+  //return true if all other tests pass
   return true;
 }
 
