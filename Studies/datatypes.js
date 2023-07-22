@@ -38,20 +38,21 @@
 
 
 
-//OBJECTS AND ARRAYS
-
 /*
+*                         COMPLEX DATATYPES => OBJECTS, ARRAYS, FUNCTIONS
+*
 * Objects and Arrays are both complex datatypes used in JavaScript to hold collections 
-* and various types of data. These two datatypes are useful for when multiple pieces 
-* of data about one thing or many things. It is also important to note that since these
-* are both complex data types, they have the capacity to expand indefinitely. While both
-* are considered objects, they behave differently and require different methods of 
-* assignment and access.
+*   and various types of data. These two datatypes are useful for when multiple pieces 
+*   of data about one thing or many things. It is also important to note that since these
+*   are both complex data types, they have the capacity to expand indefinitely. While both
+*   are considered objects, they behave differently and require different methods of 
+*   assignment and access.
 */
 
 
 /*
-OBJECTS are used to store data that represents one thing in the form of key/value pairs
+* OBJECTS are used to store data that represents one thing in the form of key/value pairs
+* separated by a colon (:)
 */
 
 let object = {}; //object literal is assigned as curly braces
@@ -166,6 +167,8 @@ array3.shift(); //removes first element
 array3.splice(1, 1, "we done spliced y'all");
 
 // using splice to delete an element
-// array3.splice(2, 1);
+array3.splice(2, 1); //splices number value 3 out of index 2
 
-// console.log(array3);
+/**
+ * 
+ */

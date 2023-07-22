@@ -1,3 +1,5 @@
+//COMPLETE!
+
 /**
  * ===> LOOPS ===> LOOPS ===> LOOPS
  * 
@@ -224,5 +226,33 @@ while (array3.length < 6) {
  * 4) DO-WHILE LOOPS
  * 
  *      Do-while loops behave just like while loops in that this loop can iterate an infinite amount of 
- *      times or at least the condition returns false.
+ *      times or at least the condition returns false. The main difference here is the do...while loop
+ *      will execute the code block BEFORE checking the condition unlike the while loop which does the 
+ *      opposite (checks the condition then runs the code block)
+ */
+
+/**
+ * SYNTAX:
+ *  do {
+ *      statement
+ *  } while (condition)
+ */
+
+let counter = 0;
+
+do {
+    counter++;
+    console.log(`This current number is ${counter}`);
+} while (counter < 5);
+
+/**
+ * This logs to the console:
+ * 
+ * "This current number is 1"
+ * "This current number is 2"
+ * "This current number is 3"
+ * "This current number is 4"
+ * "This current number is 5"
+ * 
+ * => exits after the fifth printed string 
  */

@@ -90,3 +90,5 @@ console.log(hungry("I'm Very Hungry!")); //prints "I'm Very Hungry!"
 sum(5, 4); //function call/invocation
 
 console.log(sum(5, 4)); //prints 9 as the function code block is running 5 + 4
+
+//Higher order functions and recursion, pure functions, impure functions
