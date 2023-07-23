@@ -46,7 +46,7 @@ console.log(number); //==> returns a number value of 1
 
 var string = 'Stephen'; //==> variable is both declared and assigned a value
 
-console.log(string); //prints Stephen
+console.log(string); //prints 'Stephen'
 
 // 4) REASSIGNING
 /**
@@ -56,7 +56,7 @@ console.log(string); //prints Stephen
 
 string = 'A different string'; //==> variable string is reassigned a new string
 
-console.log(string); //==> prints A different string
+console.log(string); //==> prints "A different string"
 
 
 /**

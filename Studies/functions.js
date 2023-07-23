@@ -72,6 +72,45 @@ function hungry(string) { //this function contains 1 parameter
 }
 
 /**
+ * Arguments parameters and default parameters are also useful in function declarations
+ * by helping reduce the amount of lines being used and helps improve readability. That
+ * being said, arguments paramters can continously take in values but that paramter stores
+ * them in an array so the data will have to be accessed via loops most likely and default
+ * parameters can be as simple as declaring an empty array/object/string/undefined.
+ * 
+ * arguments parameter's syntax will always be => [...arguments]
+ */
+
+//example using a default parameter
+
+function defaultParam(arr = [], num) {
+  //var arr = []; => This is what the default parameter arr is doing in the 
+  // background without us having to code that in
+  for (let i = 0; i > 0; i--) {
+    arr.push(num);
+    num--;
+  }
+  return arr;
+}
+
+//example with the arguments object parameter
+/**
+ * This example works because the numbers being passed into the function invocation are put into
+ * an array-like object allowing us to iterate through that array and accumulate a sum that 
+ * returns the value 15.
+ */
+
+function argsObject() {
+  let sum = 0
+  for (let i = 0; i < arguments.length; i++) {
+    sum += arguments[i];
+  }
+  return sum;
+}
+
+argsObject(1, 2, 3, 4, 5) //=> arguments in the loop like like [1, 2, 3, 4, 5]
+
+/**
  * FUNCTION CALL/INVOACTION: To pass data through a function as arguments and to 
  * activate the function blueprint. Developers will usually call or invoke the 
  * function by referencing the function's name and passing the required data
@@ -264,8 +303,6 @@ function reduce(array, callback, seed) {
   return result;
 }
 
-//recursion, pure/impure functions, closure
-
 /**
  * In some of the examples above, you have seen an example closures, which by 
  * definition is a function that is referencing a value in its parent scope.
@@ -291,3 +328,101 @@ let closure = () => {
     console.log(language);
   };
 };
+
+
+
+/**
+ * RECURSION => recursion (recursive function) occurs when a function calls on itself until
+ * it doesn't (due to a condition that returns false). The proper blueprint of a recursive 
+ * function consists of two parts.
+ * 
+ * BASE CASE => The conditional logic that will return a boolean value and exit the function
+ *  when the desired result is reach (usually in the form of an if statement)
+ * 
+ * RECURSION CASE => If the condition is not passed in the base case, the code below will
+ * execute and at the end will invoke the function so the process repeats.
+ */
+
+/**
+ * The below example's base case has TWO conditions on which the function will exit. The first one 
+ * being if the array's length === 0 or that the array's first index matches the string input. However,
+ * if both of those conditions return false, then the recursion case executes and this is a very basic
+ * execution of recursion. 
+ * 
+ * NOTE => The input variable being tested in in the base case MUST be mutated or changed in some manner
+ * so that eventually the base case will return true. The above example uses the array.splce() method that
+ * is slicing off the first index of the array and will continue to do so in the function invocation
+ *  until one of the base case conditions is met.
+ */
+
+let names = ["Charlie", "Devon", "Bill", "Nye"];
+
+let getName = (array, string) => {
+  //base case
+  if (array.length === 0) {
+    return "Name does not exist";
+  } else if (array[0] === string) {
+    return array[0];
+  }
+  //recursion case
+  return getName(array.slice(1), string);
+};
+
+getName(names, "Bill");
+
+
+
+/**
+ * Lastly, in this introduction to functions, depending on the context in which kind of function
+ * is needed can lead to developers to code either pure or impure functions.
+ * 
+ * PURE functions => have two qualites
+ * 
+ * 1) Deterministic => when given the same input, always produces same output
+ * 2) No side effect => This means ALL inputs are passed in, none of the globally
+ *    scoped variables are are used and the return statement can't indicate a 
+ *    side effect (such as changing a globally scoped variable in any way, the return
+ *    should be independent in it's existance)
+ */
+
+/**
+ * The two examples below are pure functions because they both only return or print the values passed into them
+ * 
+ * addify will always return the value of x + y (doesn't reassign a global variable) meaning the function
+ * itself IS the value of x + y
+ * 
+ * message will always print the string value string1 + string2 as it's own value and, again, not accessing
+ * a global variable. The string parameters should be string passed in that have no variables pointing at them
+ */
+
+function addify(x, y) {
+  return x + y;
+}
+
+function message (string1, string2) {
+  console.log(string1 + string2);
+}
+
+/**
+ * The below examples are impure because looking at what their code blocks are executing we can see that each
+ * code block is referencing and reassigning a global variable (which is considered a side effect). Also, the
+ * global variables being used are not being passed as arguments, they are simply being accessed from the global scope.
+ */
+
+var x = 4;
+
+function impureAddify(y) {
+  return x += y;
+}
+
+impureAddify(6) //returns 10
+
+
+var greet = "Hello";
+
+function impureGreeting(name) {
+  greet += ` ${name}`;
+  console.log(greet);
+}
+
+impureGreeting("Stephen"); //prints "Hello Stephen"
