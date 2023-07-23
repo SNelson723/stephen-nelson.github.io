@@ -224,7 +224,6 @@ function forEach(array, callback) {
       3) array => the array (in the case of this if statement)
     */
     callback(array[i], i, array);
-    //if collection is an object
   }
 }
 
@@ -268,6 +267,27 @@ function reduce(array, callback, seed) {
 //recursion, pure/impure functions, closure
 
 /**
- * In some of the examples above, you may have seen examples of pure functions and closures. By that, 
- * I mean functions that  
+ * In some of the examples above, you have seen an example closures, which by 
+ * definition is a function that is referencing a value in its parent scope.
+ * Whether the nested function is being invoked after creation within the outer
+ * function scope or being returned, the function MUST maintain access to the 
+ * parent function's variables in order to be considered a closure.
+ * 
+ * Two examples above can be found in the map and reduce methods with the
+ * anonymous functions that are retaining access to the local scope of their 
+ * parent functions.
  */
+
+/**
+ * This example uses a function declaration in the return statement that prints
+ * the language variable to the console. However, the language variable being 
+ * accessed is in the outer function scope.
+ * 
+ */
+
+let closure = () => {
+  let language = JavaScript;
+  return function () {
+    console.log(language);
+  };
+};

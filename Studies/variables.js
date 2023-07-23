@@ -58,20 +58,24 @@ string = 'A different string'; //==> variable string is reassigned a new string
 
 console.log(string); //==> prints A different string
 
-//NEED LET AND CONST EXPLAINED
 
 /**
  * LET and CONST are updates of ES6 circa 2015 which helped developers write cleaner and 
  * less problematic code. Unlike the var keyword, let cannot be redeclared,
  * but CAN be reassigned. Const on the other hand CANNOT both be redeclared or reassigned. 
  * This helps reduce the chances of accidentally redeclaring or reassigning a variable we
- * did not intend on changing.
+ * did not intend on changing. It's also important to note that unlike the var keyword and
+ * functions (which are globally scoped), let and const are locally scoped meaning the text 
+ * compiler doesn't push those keywords to the top of the text reader. This helps developers
+ * by helping prevent code from being overwritten when certain variables and functions need
+ * to remain constant during production (control flow of the code => control-flow.js).
  */
 
 /**
  * Using the let keyword here means another variable named music cannot be declared
  * but can be reassigned.
  */
+
 let music = "good";
 music = "not bad";
 console.log(music); //prints "not bad"
