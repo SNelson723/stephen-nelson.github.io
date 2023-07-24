@@ -136,17 +136,25 @@ for (let i = 0; i < array.length; i++) {
  * in this fashion helps the computer/developers to determine which conditions are being tested and
  * how they are related to one another.
  * 
- * This function takes in a number parameter and wiill use a conditional chain to determine which
+ * This function takes in a number parameter and will use a conditional chain to determine which
  * message to return as a result of the passing condition.
  */
 
 function position(number) {
     if (number === 1) {
-        return "Gold Medal"
+        return "Gold Medal";
     } else if (number === 2) {
-
+        return "Silver Medal";
+    } else if (number === 3) {
+        return "Bronze Medal";
+    } else if (number >= 4 && number < 10) {
+        return "better luck next time";
+    } else {
+        return "not a contestant";
     }
 }
+
+position(4); //returns "better luck next time"
 
 
 
