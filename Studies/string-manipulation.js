@@ -157,11 +157,11 @@ let newWords = string2.charAt(0).toUpperCase().concat(string2.slice(1)); // "I d
  * for good reason. Some situations require coders to capitalize the first letter of each word
  * in a string and as shown above, just using toUpperCase() or toLowerCase() on a string operates
  * on ALL characters in a string. In order to get around this, each word must be separated and accessed
- * like the newWords variable so that each word is properly operated on. On line 163, firstCharAtWord
- * is being initialized as an array that string2 has been split by the spaces. Line 166 loops through 
+ * like the newWords variable so that each word is properly operated on. On line 168, firstCharAtWord
+ * is being initialized as an array that string2 has been split by the spaces. Line 170 loops through 
  * that array and uses charAt().toUpperCase like newWords, but instead of using concat() simply
  * adds with the addition operator followed by the rest of the word with the first character sliced off.
- * Lastly on line 173, firstCharAtWord is joined back into a string with spaces between each added element
+ * Lastly on line 174, firstCharAtWord is joined back into a string with spaces between each added element
  * leaving the string with every word's first character capitalized.
  */
 
@@ -186,6 +186,28 @@ firstCharAtWord = firstCharAtWord.join(" "); //=> "I Do Like Coding"
  */
 
 /**
+ * In this example, nameDog is manipulated with the replace() method by taking the first 
+ * occurence of the character "S" and replacing it with "M" changing the string from
+ * "Scooby Doo" to "Mcooby Doo"
+ */
+
+let nameDog = "Scooby Doo";
+nameDog = nameDog.replace("S", "M"); // "Mcooby Doo"
+
+/**
+ * In this example, dogName is assigned a string "Scooby Doo" like nameDog above, but different these
+ * are different variables pointing to different strings. However, the replace method is still being
+ * utilized on dogName but this time with a regex (regular expression) that catches EVERY occurence 
+ * of the target character "o" and replaces them with "e" leaving the string as "Sceeby Dee".
+ */
+
+let dogName = "Scooby Doo";
+
+//regex /o/g catches every occurence of character "o" and is replaced with "e"
+dogName = dogName.replace(/o/g, "e"); 
+
+
+/**
  * ESCAPE CHARACTERS => Escape characters are typically classified as regular expressions 
  * and are represented by a character that isn't in its literal form. There are many escape
  * characters with their own behavior but a few that will be discussed are as follows:
@@ -193,9 +215,32 @@ firstCharAtWord = firstCharAtWord.join(" "); //=> "I Do Like Coding"
  * 1) \n => creates a newline in a string
  * 2) \' and \" => denotes that these are used as punctuation instead of 
  *  initializing a string value
- * 3) \b => adds a backspace to a string
- * 4) \t => adds a horizontal tabular to a string (used well with newline(\n))
+ * 3) \t => adds a horizontal tabular to a string (used well with newline(\n))
  */
+
+/**
+ * The variable newLine incorporates the newline character (\n) in its string value and when
+ * printed, should like like
+ * 
+ * Stephen
+ * Nelson
+ * Jack
+ */
+
+let newLine = "Stephen\n Nelson\n Jack\n";
+
+/**
+ * The variable quotes is a simple string but since string are wrapped in quotes, using quotation 
+ * marks within the string can cause problems. This can be negated using \' or \" depending on
+ * the purpose of the quotes being used. However, notice the single quote didn't need a backslash.
+ * This is because double quotes were used to wrap the string instead of single quotes, meaning
+ * the computer will not read that single quote as one of the string's boundaries, but the slash
+ * is needed for the quotes around famous otherwise the the string will be cut off before famous
+ * and the rest of the string will be undefined and disrupt the control flow of the code.
+ */
+
+let quotes =  "aren't you \"famous\"?";
+
 
 /**
  * TEMPLATE LITERAL => A string literal that has less limitations and requires less characters
