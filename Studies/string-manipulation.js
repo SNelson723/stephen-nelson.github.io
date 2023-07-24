@@ -225,9 +225,28 @@ dogName = dogName.replace(/o/g, "e");
  * Stephen
  * Nelson
  * Jack
+ * 
+ * The variable names has a string with the same names as in newLine but without the \n character.
+ * If a string needs to be manipulated to have new line breaks in the code, there are ways to access
+ * these strings through other methods. In the second case, names is being split at each word and 
+ * iterated through to add the names separated by a new line to the variable lineNames which when 
+ * printed looks like:
+ * 
+ * Stephen 
+ * Nelson
+ * Jack
+ * 
  */
 
-let newLine = "Stephen\n Nelson\n Jack\n";
+let newLine = "Stephen\nNelson\nJack\n";
+
+let names = "Stephen Nelson Jack";
+names = names.split(" "); //=> ["Stephen", "Nelson", "Jack"];
+
+let lineNames = "";
+for (let i = 0 ; i < names.length; i++) {
+    lineNames += names[i] + "\n"; //NOTE: make sure in this syntax that \n is wrapped in quotes
+}
 
 /**
  * The variable quotes is a simple string but since string are wrapped in quotes, using quotation 
@@ -241,9 +260,85 @@ let newLine = "Stephen\n Nelson\n Jack\n";
 
 let quotes =  "aren't you \"famous\"?";
 
+/**
+ * The tabularNames variable is behaving very similar to newLine but with one difference. Following
+ * the new line character after every other name the \t (horizontal tabular) character is being
+ * implemented to add a tab every other name and if printed will look like:
+ * 
+ * Stephen
+ *      Nelson
+ * Jack
+ *      Skellington
+ * 
+ * The other example with noTabs is producing the same result but spliting the string noTabs into
+ * an array and iterating through that array with a for loop. and during each iteration, the loop
+ * is testing if i % === 0 (if the current index is even) and adding the the element with a new 
+ * line and horizontal tab and if the index is odd just the element and a new line will be added
+ * to the yesTabs string which should look like this when printed or return
+ * 
+ * Stephen
+ *      Nelson
+ * Jack
+ *      Skellington
+ */
+
+let tabularNames = "Stephen\n\tNelson\nJack\n\tSkellington";
+
+let noTabs = "Stephen Nelson Jack Skellington";
+noTabs = noTabs.split(" ");
+
+let yesTabs = "";
+for (let i = 0; i < noTabs.length; i++) {
+    if (i % 2 === 0) {
+        yesTabs += noTabs[i] + "\n\t";
+    } else {
+        yesTabs += noTabs[i] + "\n";
+    }
+}
+
 
 /**
- * TEMPLATE LITERAL => A string literal that has less limitations and requires less characters
+ * NOTE: Template literals were first introduced in 2015 in the monumental ES6 update to JavaScript
+ * making strings more versatile and flexible with manipulation. This was done by getting rid of 
+ * the (+ " ") approach as seen in the examples above and allowing the literal the ability to retain
+ * access to values in outside variables with ${} which is exampled in the next paragraph.
+ * 
+ * TEMPLATE LITERAL => A string literal has less limitations and requires less characters
  * and are used for string interpolation (using placeholders as substitutions). These placeholders
- * initialized by ${} with the reference of a sring or value nested in the curly braces.
+ * initialized by ${} with the reference of a string or value nested in the curly braces. Intead of
+ * using quotation marks like typical strings, the backtick character is used to surround the string
+ * and any of the placeholders that the template literal will reference from outside variables.
  */
+
+let template = `This is a template literal`; //basic syntax
+
+/**
+ * The example below makes use of the placeholder ${} => which can be used to access values from
+ * outside variables. In this situation, the noTabs array is being accessed since in the current
+ * control flow, that variable exists as an array of names in the global scale. The printed or 
+ * return result should look like:
+ * 
+ * "My name is Stephen and my favorite claymation character is Jack Skellington"
+ */
+let template2 = `My name is ${noTabs[0]} and my favorite claymation character is ${noTabs[2]} ${noTabs[3]}`;
+
+/**
+ * This example shows how versatile template literals can be when manipulating strings with placeholders.
+ * This example shows that template literals can take in non-string values and return them as part
+ * of the string literal. Which looks like
+ * 
+ * "I just won 100 dollars!"
+ */
+
+let prize = 100;
+let myPrize = `I just won ${prize} dollars!`; // adds the numerical value 100 to the string (type coersion)
+
+/**
+ * This last example shows another situation in which type coercion is executed when the template literal
+ * accesses a non-string value and in this case the value being accessed is a boolean value (true);
+ * 
+ * When logged to the console, the string will look like => "All too true"
+ */
+
+let bool = true;
+let boolCoercion = `All too ${bool}`;
