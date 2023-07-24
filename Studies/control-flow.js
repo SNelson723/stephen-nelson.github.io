@@ -181,3 +181,40 @@ position(4); //returns "better luck next time"
  *      break;
  * }
  */
+
+/**
+ * The example below is checking different conditions of what the value of string is and which code
+ * to execute once a case is met in the switch statement. The break statements in each case is 
+ * crucial because it stops the computer from continuing to read through the statement even when
+ * a case has been met. Without a break statement in each case the switch statement will not run
+ * properly and run the correct code. The ONLY case that doesn't require the break statement is
+ * the default case which acts the same way the else keyword does but in the context of the 
+ * switch statement AND is the last code block that can be run before the computer exits the 
+ * statement.
+ */
+
+let string = "map";
+
+//the comments for the cases are being compared to the syntax of the if, else if, else chain
+switch (string) {
+    case "video": //if (string === "video")
+        console.log("game");
+        break;
+    case 45: //else if (string === 45)
+        console.log("colt");
+        break;
+    case 2: //else if(string === 2)
+        console.log("zig zags");
+        break;
+    case ["bread", "eggs"]: //else if (string === ["bread", "eggs"])
+        console.log("grocery list");
+        break;
+    case "map": //else if ()
+        console.log("treasure");
+        break;
+    case typeof string === "boolean": //else if (typeof string === "boolean")
+        console.log("boolean");
+        break;
+    default: // else {console.log("This is the default code")}
+        console.log("This is the default code");
+}
