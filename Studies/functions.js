@@ -1,6 +1,3 @@
-//                                      FUNCTIONS
-
-
 /**
  * Definition: A set of statements or instructions that carry
  * out a task or set of instructions by taking in inputs and 

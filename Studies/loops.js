@@ -1,5 +1,3 @@
-//COMPLETE!
-
 /**
  * ===> LOOPS ===> LOOPS ===> LOOPS
  * 
